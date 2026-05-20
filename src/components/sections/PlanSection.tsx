@@ -92,6 +92,33 @@ export default function PlanSection() {
           <h4>Étape 5 — Les Cibles de Communication</h4>
           <p>Si on parle à tout le monde, on ne parle à personne. On segmente toujours :</p>
           <CiblesVisual />
+
+          <div style={{ marginTop: 32, paddingTop: 24, borderTop: '2px dashed var(--border)' }}>
+            <h5 style={{ fontSize: 15, fontWeight: 700, marginBottom: 8, color: 'var(--ink)' }}>Les Motivations &amp; Freins</h5>
+            <p style={{ fontSize: 13.5, color: '#475569', marginBottom: 16 }}>Pour chaque cible, il faut comprendre pourquoi elle achèterait (<strong>motivations</strong>) et pourquoi elle n'achèterait pas (<strong>freins</strong>). Ça permet de construire un message qui lève les freins et active les motivations.</p>
+            
+            <h6 style={{ fontSize: 13.5, fontWeight: 700, marginBottom: 12, color: 'var(--ink)' }}>Les types de motivations :</h6>
+            <TableWrap>
+              <thead><tr><th>Type</th><th>Explication</th><th>Exemple</th></tr></thead>
+              <tbody>
+                <tr><td style={{ fontWeight: 600 }}>Hédoniste</td><td>Plaisir, envie personnelle</td><td>« J'ai envie de ce produit »</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Oblative</td><td>Faire plaisir aux autres</td><td>« C'est pour offrir »</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Auto-expression</td><td>Montrer qui on est, ses valeurs</td><td>« Ça correspond à mon engagement RSE »</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Rationnelle</td><td>Logique, économie</td><td>« C'est moins cher et plus pratique »</td></tr>
+              </tbody>
+            </TableWrap>
+
+            <h6 style={{ fontSize: 13.5, fontWeight: 700, marginTop: 24, marginBottom: 12, color: 'var(--ink)' }}>Les types de freins :</h6>
+            <TableWrap>
+              <thead><tr><th>Type</th><th>Explication</th><th>Exemple</th></tr></thead>
+              <tbody>
+                <tr><td style={{ fontWeight: 600 }}>Financier</td><td>Trop cher</td><td>« Je n'ai pas le budget »</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Psychologique</td><td>Peur, méfiance</td><td>« Je ne fais pas confiance au reconditionné »</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Manque d'information</td><td>Ne connaît pas la marque ou l'offre</td><td>« Je ne connais pas cette marque »</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Inertie</td><td>Habitude, résistance au changement</td><td>« J'ai toujours fait autrement »</td></tr>
+              </tbody>
+            </TableWrap>
+          </div>
         </div>
 
         {/* Étape 6 */}
