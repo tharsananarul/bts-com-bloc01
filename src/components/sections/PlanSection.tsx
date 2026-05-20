@@ -26,6 +26,21 @@ export default function PlanSection() {
           ]} />
           <Example>Une marque de sport voit que le running est en plein boom (opportunité), mais qu'elle est peu connue des jeunes (faiblesse). Son SWOT le fait apparaître clairement.</Example>
           <Tip>À l'examen : colorise ton SWOT avec 2 couleurs (vert = positif, rouge = négatif). Tu marques des points en lisibilité.</Tip>
+
+          <div style={{ marginTop: 24, paddingTop: 20, borderTop: '2px dashed var(--border)' }}>
+            <h5 style={{ fontSize: 14, fontWeight: 700, marginBottom: 8, color: 'var(--ink)' }}>L'Analyse PESTEL (Le Macro-environnement)</h5>
+            <p style={{ fontSize: 13.5, color: '#475569', marginBottom: 12 }}>On scanne tout ce qui se passe à l'extérieur de l'entreprise pour repérer les grandes tendances qui vont l'impacter. C'est 100 % externe.</p>
+            <StyledList items={[
+              <><strong>Politique</strong> (stabilité de l'État, aides gouvernementales)</>,
+              <><strong>Économique</strong> (inflation, pouvoir d'achat)</>,
+              <><strong>Socioculturel</strong> (modes de vie, valeurs culturelles, tendances de consommation)</>,
+              <><strong>Technologique</strong> (innovations, IA, réseaux sociaux)</>,
+              <><strong>Environnemental</strong> (écologie, météo, climat)</>,
+              <><strong>Légal</strong> (lois, RGPD, normes)</>,
+            ]} />
+            <Example>L'État passe une loi interdisant les emballages plastiques (Légal et Environnemental). C'est une menace pour une marque d'eau en bouteille, mais une grosse opportunité pour une marque de gourdes réutilisables.</Example>
+            <Tip>À l'examen : Fais ton PESTEL au brouillon pour "fouiller" le macro-environnement. Ce que tu trouves de pertinent, tu le tries ensuite directement dans les cases "Opportunités" ou "Menaces" de ton SWOT sur ta copie. Le PESTEL nourrit le SWOT (l'externe). Ne mélange pas les deux !</Tip>
+          </div>
         </div>
 
         {/* Étape 2 */}
