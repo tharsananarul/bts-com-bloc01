@@ -7,594 +7,511 @@
 <title>Fiche Révision BTS Com — Bloc 01</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* ─── DESIGN TOKENS ───────────────────────────────── */
   :root {
-    --ink: #1a1a2e;
-    --paper: #faf8f3;
-    --accent1: #e63946;
-    --accent2: #2a9d8f;
-    --accent3: #e9c46a;
-    --accent4: #6a4c93;
-    --muted: #6b7280;
-    --border: #e5e0d5;
-    --card: #ffffff;
-    --nav-height: 60px;
-    --bottom-nav-height: 68px;
+    --ink:    #1a1a2e;
+    --paper:  #f5f3ee;
+    --accent1: #d62839;
+    --accent2: #1e8a7c;
+    --accent3: #d4a017;
+    --accent4: #5a3e8c;
+    --accent4-text: #3d2a63; /* violet sombre — contraste WCAG AA sur blanc */
+    --muted:  #64748b;
+    --border: #e2ddd5;
+    --card:   #ffffff;
+    --shadow-sm: 0 1px 4px rgba(26,26,46,0.07);
+    --shadow-md: 0 4px 16px rgba(26,26,46,0.10);
+    --shadow-lg: 0 8px 32px rgba(26,26,46,0.13);
+    --r-sm: 10px;
+    --r-md: 14px;
+    --r-lg: 18px;
+    --bottom-nav-h: 76px;
+    --ease: .2s cubic-bezier(.4,0,.2,1);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
   html { scroll-behavior: smooth; }
 
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--paper);
     color: var(--ink);
-    line-height: 1.7;
+    line-height: 1.75;
     font-size: 15px;
-    padding-bottom: calc(var(--bottom-nav-height) + 16px);
+    padding-bottom: calc(var(--bottom-nav-h) + 20px);
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* ─── HEADER ─────────────────────────────────────── */
+  /* ─── PROGRESS BAR ────────────────────────────────── */
+  #progress-bar {
+    position: fixed; top: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent1), #ff6b6b);
+    z-index: 999;
+    width: 0%;
+    transition: width .15s ease;
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* ─── HEADER ──────────────────────────────────────── */
   header {
-    background: var(--ink);
+    background: linear-gradient(145deg, #1a1a2e 0%, #0f0f1e 100%);
     color: white;
-    padding: 40px 20px 32px;
+    padding: 44px 24px 36px;
     position: relative;
     overflow: hidden;
   }
   header::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 280px; height: 280px;
-    background: var(--accent1);
-    border-radius: 50%;
-    opacity: 0.15;
+    content: ''; position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    background: var(--accent1); border-radius: 50%; opacity: .12;
   }
   header::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; left: 40%;
-    width: 180px; height: 180px;
-    background: var(--accent3);
-    border-radius: 50%;
-    opacity: 0.1;
+    content: ''; position: absolute;
+    bottom: -90px; left: 38%;
+    width: 220px; height: 220px;
+    background: var(--accent3); border-radius: 50%; opacity: .09;
   }
   .badge {
-    display: inline-block;
-    background: var(--accent1);
-    color: white;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 12px;
+    display: inline-flex; align-items: center;
+    background: rgba(214,40,57,.85);
+    backdrop-filter: blur(6px);
+    color: white; font-size: 10px; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 14px;
+    border: 1px solid rgba(255,255,255,.15);
+    position: relative;
   }
   header h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(26px, 7vw, 48px);
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 10px;
-    position: relative;
+    font-size: clamp(28px, 7vw, 50px);
+    font-weight: 900; line-height: 1.1;
+    margin-bottom: 12px; position: relative;
+    letter-spacing: -.5px;
   }
   header p {
-    color: rgba(255,255,255,0.65);
-    font-size: 13px;
-    font-weight: 300;
-    position: relative;
-    line-height: 1.5;
+    color: rgba(255,255,255,.6); font-size: 13px;
+    font-weight: 400; position: relative;
+    line-height: 1.6; max-width: 480px;
   }
 
-  /* ─── PROGRESS BAR ───────────────────────────────── */
-  #progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background: var(--accent1);
-    z-index: 999;
-    transition: width 0.1s;
-    width: 0%;
-  }
-
-  /* ─── TOP NAV (desktop) ──────────────────────────── */
+  /* ─── TOP NAV — desktop ───────────────────────────── */
   .top-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: white;
-    border-bottom: 2px solid var(--border);
-    padding: 0 16px;
-    display: flex;
-    gap: 4px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1.5px solid var(--border);
+    padding: 0 20px;
+    display: flex; gap: 2px;
+    overflow-x: auto; scrollbar-width: none;
+    box-shadow: 0 2px 12px rgba(26,26,46,.06);
   }
   .top-nav::-webkit-scrollbar { display: none; }
   .tab {
-    padding: 14px 18px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    background: none;
-    color: var(--muted);
-    border-bottom: 3px solid transparent;
-    white-space: nowrap;
-    transition: all .2s;
+    padding: 15px 20px; font-size: 13px; font-weight: 600;
+    cursor: pointer; border: none; background: none;
+    color: var(--muted); border-bottom: 3px solid transparent;
+    white-space: nowrap; transition: all var(--ease);
     font-family: 'DM Sans', sans-serif;
-    touch-action: manipulation;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
+    touch-action: manipulation; min-height: 48px;
+    display: flex; align-items: center; gap: 6px;
   }
-  .tab:hover { color: var(--ink); }
-  .tab.active { color: var(--accent1); border-bottom-color: var(--accent1); }
+  .tab:hover { color: var(--ink); background: var(--paper); border-radius: 8px 8px 0 0; }
+  .tab.active { color: var(--accent1); border-bottom-color: var(--accent1); font-weight: 700; }
 
-  /* ─── BOTTOM NAV (mobile) ────────────────────────── */
+  /* ─── BOTTOM NAV — mobile ─────────────────────────── */
   .bottom-nav {
     display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: var(--bottom-nav-height);
-    background: white;
-    border-top: 1.5px solid var(--border);
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: var(--bottom-nav-h);
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border);
     z-index: 200;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-    padding: 0 4px;
-    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -4px 24px rgba(26,26,46,.10);
+    padding: 8px 12px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom));
   }
   .bottom-nav-inner {
-    display: flex;
-    height: 100%;
-    align-items: stretch;
+    display: flex; height: 100%;
+    align-items: stretch; gap: 4px;
   }
   .bnav-tab {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    border: none;
-    background: none;
-    color: var(--muted);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all .2s;
-    border-radius: 12px;
-    margin: 4px 2px;
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 4px;
+    border: none; background: none;
+    color: var(--muted); font-family: 'DM Sans', sans-serif;
+    font-size: 11.5px; font-weight: 600;
+    cursor: pointer; transition: all var(--ease);
+    border-radius: var(--r-sm); padding: 6px 4px;
     touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
   }
-  .bnav-tab .bnav-icon { font-size: 20px; line-height: 1; }
+  .bnav-tab .bnav-icon {
+    font-size: 22px; line-height: 1;
+    transition: transform var(--ease);
+  }
   .bnav-tab.active {
     color: var(--accent1);
-    background: rgba(230, 57, 70, 0.08);
+    background: rgba(214,40,57,.07);
+    font-weight: 700;
   }
-  .bnav-tab:active { transform: scale(0.93); }
+  .bnav-tab.active .bnav-icon { transform: translateY(-1px); }
+  .bnav-tab:active { transform: scale(.92); }
 
-  /* ─── SECTIONS ───────────────────────────────────── */
-  .section { display: none; padding: 24px 16px 16px; max-width: 900px; margin: 0 auto; }
+  /* ─── SECTIONS ────────────────────────────────────── */
+  .section {
+    display: none; padding: 28px 20px 20px;
+    max-width: 920px; margin: 0 auto;
+  }
   .section.active { display: block; animation: fadeIn .3s ease; }
-  @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes fadeIn {
+    from { opacity:0; transform:translateY(10px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
 
-  /* ─── SECTION TITLES ─────────────────────────────── */
+  /* ─── SECTION TITLES ──────────────────────────────── */
   .section-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(22px, 6vw, 28px);
-    font-weight: 700;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    font-size: clamp(22px, 5.5vw, 30px);
+    font-weight: 900; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 12px;
+    letter-spacing: -.3px;
   }
   .section-title span { font-size: 28px; }
   .section-subtitle {
-    color: var(--muted);
-    font-size: 13px;
-    margin-bottom: 28px;
-    padding-bottom: 18px;
-    border-bottom: 2px solid var(--border);
-    line-height: 1.5;
+    color: var(--muted); font-size: 13.5px;
+    margin-bottom: 28px; padding-bottom: 20px;
+    border-bottom: 2px solid var(--border); line-height: 1.6;
+  }
+  .subsection-title {
+    font-size: 15px; font-weight: 700;
+    margin: 28px 0 14px;
+    display: flex; align-items: center; gap: 8px;
+    color: var(--ink); padding: 10px 14px;
+    background: white; border-radius: var(--r-sm);
+    border: 1.5px solid var(--border);
+    box-shadow: var(--shadow-sm);
   }
 
-  /* ─── CARDS ──────────────────────────────────────── */
+  /* ─── CARDS ───────────────────────────────────────── */
   .card {
     background: var(--card);
     border: 1.5px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 16px;
-    margin-bottom: 16px;
-    position: relative;
-    overflow: hidden;
+    border-radius: var(--r-md);
+    padding: 22px 18px; margin-bottom: 16px;
+    position: relative; overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--ease);
   }
-  .card-accent-left  { border-left: 5px solid var(--accent1); }
-  .card-accent-green { border-left: 5px solid var(--accent2); }
-  .card-accent-yellow{ border-left: 5px solid var(--accent3); }
-  .card-accent-purple{ border-left: 5px solid var(--accent4); }
+  .card:hover { box-shadow: var(--shadow-md); }
+  .card-accent-left   { border-left: 5px solid var(--accent1); }
+  .card-accent-green  { border-left: 5px solid var(--accent2); }
+  .card-accent-yellow { border-left: 5px solid var(--accent3); }
+  .card-accent-purple { border-left: 5px solid var(--accent4); }
 
   .card h3 {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    line-height: 1.4;
+    font-size: 15px; font-weight: 700;
+    margin-bottom: 14px;
+    display: flex; align-items: flex-start; gap: 10px;
+    line-height: 1.45; color: var(--ink);
   }
   .card h3 .step-num {
-    background: var(--accent1);
-    color: white;
-    width: 26px; height: 26px;
-    border-radius: 50%;
+    background: var(--accent1); color: white;
+    width: 28px; height: 28px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 12px;
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 1px;
+    font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+    box-shadow: 0 2px 6px rgba(214,40,57,.3);
   }
-  .step-num.green  { background: var(--accent2); }
-  .step-num.yellow { background: #c8963a; }
-  .step-num.purple { background: var(--accent4); }
+  .step-num.green  { background: var(--accent2); box-shadow: 0 2px 6px rgba(30,138,124,.3); }
+  .step-num.yellow { background: #b5820f;        box-shadow: 0 2px 6px rgba(181,130,15,.3); }
+  .step-num.purple { background: var(--accent4); box-shadow: 0 2px 6px rgba(90,62,140,.3);  }
   .step-num.red    { background: var(--accent1); }
 
-  /* ─── LISTS ──────────────────────────────────────── */
+  /* ─── LISTS ───────────────────────────────────────── */
   ul.styled { list-style: none; padding: 0; }
   ul.styled li {
-    padding: 8px 0 8px 22px;
-    position: relative;
-    font-size: 14px;
-    color: #333;
-    border-bottom: 1px solid var(--border);
-    line-height: 1.5;
+    padding: 9px 0 9px 24px; position: relative;
+    font-size: 14px; color: #374151;
+    border-bottom: 1px solid var(--border); line-height: 1.6;
   }
   ul.styled li:last-child { border-bottom: none; }
   ul.styled li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--accent1);
-    font-weight: 700;
+    content: '→'; position: absolute; left: 0;
+    color: var(--accent1); font-weight: 700;
   }
 
-  /* ─── NOTICE BOXES ───────────────────────────────── */
+  /* ─── NOTICE BOXES ────────────────────────────────── */
   .example, .warning, .tip {
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin-top: 12px;
-    font-size: 13px;
-    line-height: 1.6;
+    border-radius: var(--r-sm); padding: 13px 16px;
+    margin-top: 14px; font-size: 13.5px; line-height: 1.65;
   }
-  .example {
-    background: #f0faf8;
-    border: 1px solid #b7e4dc;
-    color: #1a5e55;
-  }
-  .example::before { content: '💡 Exemple : '; font-weight: 700; }
-  .warning {
-    background: #fff5f5;
-    border: 1px solid #fca5a5;
-    color: #991b1b;
-  }
-  .warning::before { content: '⚠️ Attention : '; font-weight: 700; }
-  .tip {
-    background: #fffbeb;
-    border: 1px solid #fcd34d;
-    color: #78350f;
-  }
-  .tip::before { content: '✏️ Astuce examen : '; font-weight: 700; }
+  .example  { background: #e8f8f5; border: 1px solid #9fd8ce; color: #0f4a43; }
+  .warning  { background: #fef2f2; border: 1px solid #f87171; color: #7f1d1d; }
+  .tip      { background: #fefce8; border: 1px solid #facc15; color: #713f12; }
+  .example::before { content: '💡 Exemple : ';        font-weight: 700; }
+  .warning::before { content: '⚠️ Attention : ';      font-weight: 700; }
+  .tip::before     { content: '✏️ Astuce examen : ';  font-weight: 700; }
 
-  /* ─── MNEMONIC ───────────────────────────────────── */
+  /* ─── MNEMONIC ────────────────────────────────────── */
   .mnemonic {
-    background: linear-gradient(135deg, #1a1a2e, #2a1a4e);
-    color: white;
-    border-radius: 16px;
-    padding: 24px 16px;
-    margin: 24px 0;
-    text-align: center;
+    background: linear-gradient(145deg, #1a1a2e 0%, #2d1a50 100%);
+    color: white; border-radius: var(--r-lg);
+    padding: 28px 20px; margin: 24px 0; text-align: center;
+    box-shadow: var(--shadow-lg);
   }
-  .mnemonic h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; margin-bottom: 10px; }
+  .mnemonic h4 {
+    font-size: 10px; letter-spacing: 3px;
+    text-transform: uppercase; opacity: .55;
+    margin-bottom: 12px; font-weight: 600;
+  }
   .mnemonic .acronym {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 8vw, 36px);
-    font-weight: 900;
-    letter-spacing: 6px;
-    color: var(--accent3);
-    margin-bottom: 16px;
+    font-size: clamp(26px, 8vw, 36px);
+    font-weight: 900; letter-spacing: 5px;
+    color: #f4d03f; margin-bottom: 18px;
   }
   .mnemonic .letters {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    display: flex; justify-content: center;
+    gap: 10px; flex-wrap: wrap;
   }
-  .mnemonic .letter-block { text-align: center; min-width: 36px; }
+  .mnemonic .letter-block { text-align: center; min-width: 34px; }
   .mnemonic .letter {
-    font-size: 26px;
-    font-weight: 900;
-    color: var(--accent3);
-    font-family: 'DM Mono', monospace;
+    font-size: 24px; font-weight: 900;
+    color: #f4d03f; font-family: 'DM Mono', monospace;
   }
-  .mnemonic .word { font-size: 10px; opacity: 0.7; margin-top: 2px; }
+  .mnemonic .word { font-size: 10px; opacity: .65; margin-top: 3px; font-weight: 500; }
 
-  /* ─── SMART GRID ─────────────────────────────────── */
+  /* ─── SMART GRID ──────────────────────────────────── */
   .smart-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 10px;
-    margin-top: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 10px; margin-top: 14px;
   }
   .smart-item {
-    background: var(--paper);
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 8px;
-    text-align: center;
+    background: var(--paper); border: 1.5px solid var(--border);
+    border-radius: var(--r-sm); padding: 14px 8px; text-align: center;
+    transition: box-shadow var(--ease);
   }
+  .smart-item:hover { box-shadow: var(--shadow-sm); }
   .smart-item .letter { font-size: 26px; font-weight: 900; font-family: 'Playfair Display', serif; }
-  .smart-item .label { font-size: 12px; font-weight: 600; margin: 4px 0 2px; }
-  .smart-item .desc  { font-size: 11px; color: var(--muted); line-height: 1.3; }
+  .smart-item .label  { font-size: 12px; font-weight: 700; margin: 5px 0 3px; color: var(--ink); }
+  .smart-item .desc   { font-size: 11px; color: var(--muted); line-height: 1.4; }
 
-  /* ─── RESPONSIVE TABLES ──────────────────────────── */
-  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 12px; border-radius: 8px; }
-  .law-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 400px; }
-  .law-table th {
-    background: var(--ink);
-    color: white;
-    padding: 10px 12px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 12px;
+  /* ─── RESPONSIVE TABLES ───────────────────────────── */
+  .table-wrap {
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    margin-top: 14px; border-radius: var(--r-sm);
+    border: 1.5px solid var(--border);
   }
-  .law-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  .law-table tr:nth-child(even) td { background: #faf8f3; }
+  .law-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 380px; }
+  .law-table th {
+    background: var(--ink); color: white;
+    padding: 11px 14px; text-align: left;
+    font-weight: 600; font-size: 12px; letter-spacing: .3px;
+  }
+  .law-table td {
+    padding: 11px 14px; border-bottom: 1px solid var(--border);
+    vertical-align: top; color: #374151; line-height: 1.55;
+  }
+  .law-table tr:last-child td { border-bottom: none; }
+  .law-table tr:nth-child(even) td { background: #faf8f4; }
   .law-table .loi-name { font-weight: 700; color: var(--accent1); white-space: nowrap; }
 
-  /* ─── TOOL CARDS ─────────────────────────────────── */
+  /* ─── TOOL CARDS ──────────────────────────────────── */
   .tool-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 14px;
-    margin-top: 14px;
+    gap: 14px; margin-top: 14px;
   }
-  @media(max-width: 520px) { .tool-grid { grid-template-columns: 1fr; } }
   .tool-card {
-    background: white;
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    transition: transform .2s, box-shadow .2s;
+    background: white; border: 1.5px solid var(--border);
+    border-radius: var(--r-md); padding: 18px;
+    transition: transform var(--ease), box-shadow var(--ease);
+    box-shadow: var(--shadow-sm);
   }
-  .tool-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .tool-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
   .tool-name {
-    font-family: 'DM Mono', monospace;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--accent4);
+    font-family: 'DM Mono', monospace; font-size: 14px;
+    font-weight: 500; color: var(--accent4-text); /* violet sombre lisible */
     margin-bottom: 8px;
   }
   .tool-type {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 20px;
-    margin-bottom: 10px;
+    display: inline-block; font-size: 10px; font-weight: 700;
+    letter-spacing: .8px; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 20px; margin-bottom: 10px;
   }
-  .tt-analyse  { background: #e0f2fe; color: #0369a1; }
-  .tt-planning { background: #d1fae5; color: #065f46; }
-  .tt-emailing { background: #fce7f3; color: #9d174d; }
-  .tt-mesure   { background: #ede9fe; color: #5b21b6; }
-  .tt-veille   { background: #fef3c7; color: #92400e; }
-  .tool-desc   { font-size: 13px; color: #555; line-height: 1.5; }
+  /* Badges WCAG AA ≥ 4.5:1 */
+  .tt-analyse  { background: #dbeafe; color: #1e40af; }
+  .tt-planning { background: #dcfce7; color: #166534; }
+  .tt-emailing { background: #fce7f3; color: #831843; }
+  .tt-mesure   { background: #ede9fe; color: #4c1d95; }
+  .tt-veille   { background: #fef3c7; color: #78350f; }
+  .tool-desc   { font-size: 13px; color: #4b5563; line-height: 1.6; }
 
-  /* ─── ACTOR CARDS ────────────────────────────────── */
+  /* ─── ACTOR CARDS ─────────────────────────────────── */
   .actor-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 12px;
-    margin-top: 14px;
+    gap: 12px; margin-top: 14px;
   }
-  @media(max-width: 460px) { .actor-grid { grid-template-columns: 1fr 1fr; } }
   .actor-card {
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
-    padding: 14px;
-    background: white;
+    border: 1.5px solid var(--border); border-radius: var(--r-md);
+    padding: 16px; background: white;
+    box-shadow: var(--shadow-sm); transition: box-shadow var(--ease);
   }
-  .actor-icon  { font-size: 26px; margin-bottom: 8px; }
-  .actor-title { font-weight: 700; font-size: 13px; margin-bottom: 5px; line-height: 1.3; }
-  .actor-desc  { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .actor-card:hover { box-shadow: var(--shadow-md); }
+  .actor-icon  { font-size: 28px; margin-bottom: 10px; }
+  .actor-title { font-weight: 700; font-size: 13.5px; margin-bottom: 6px; line-height: 1.35; color: var(--ink); }
+  .actor-desc  { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
 
-  /* ─── CIBLE VISUAL ───────────────────────────────── */
+  /* ─── CIBLE VISUAL ────────────────────────────────── */
   .cibles-visual { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
   .cible-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    background: white;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
+    display: flex; align-items: flex-start; gap: 14px;
+    background: white; border: 1.5px solid var(--border);
+    border-radius: var(--r-sm); padding: 13px 16px;
+    box-shadow: var(--shadow-sm); transition: box-shadow var(--ease);
   }
-  .cible-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+  .cible-row:hover { box-shadow: var(--shadow-md); }
+  .cible-dot  { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
   .cible-info { flex: 1; }
-  .cible-name { font-weight: 700; font-size: 13px; margin-bottom: 3px; }
-  .cible-desc { font-size: 12px; color: #555; line-height: 1.4; }
+  .cible-name { font-weight: 700; font-size: 13.5px; margin-bottom: 4px; color: var(--ink); }
+  .cible-desc { font-size: 12.5px; color: #4b5563; line-height: 1.5; }
 
-  /* ─── POEM GRID ──────────────────────────────────── */
+  /* ─── POEM GRID ───────────────────────────────────── */
   .poem-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin: 16px 0;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; margin: 18px 0;
   }
-  @media(max-width: 520px) { .poem-grid { grid-template-columns: 1fr; } }
-  .poem-card { border-radius: 14px; padding: 18px 14px; color: white; text-align: center; }
-  .poem-card.paid   { background: var(--accent1); }
-  .poem-card.owned  { background: var(--accent2); }
-  .poem-card.earned { background: var(--accent4); }
-  .poem-card .poem-letter { font-size: 38px; font-family: 'Playfair Display', serif; font-weight: 900; }
-  .poem-card h4 { font-size: 13px; font-weight: 700; margin: 6px 0 4px; }
-  .poem-card p  { font-size: 12px; opacity: 0.88; line-height: 1.5; }
+  .poem-card {
+    border-radius: var(--r-md); padding: 20px 14px;
+    color: white; text-align: center; box-shadow: var(--shadow-md);
+  }
+  .poem-card.paid   { background: linear-gradient(145deg, #d62839, #b01f2d); }
+  .poem-card.owned  { background: linear-gradient(145deg, #1e8a7c, #147068); }
+  .poem-card.earned { background: linear-gradient(145deg, #5a3e8c, #3d2a63); }
+  .poem-card .poem-letter { font-size: 40px; font-family: 'Playfair Display', serif; font-weight: 900; line-height: 1; }
+  .poem-card h4 { font-size: 13.5px; font-weight: 700; margin: 8px 0 5px; }
+  .poem-card p  { font-size: 12px; opacity: .92; line-height: 1.55; }
 
-  /* ─── PROGRESS STEPS ─────────────────────────────── */
-  .steps { position: relative; padding-left: 32px; }
+  /* ─── PROGRESS STEPS ──────────────────────────────── */
+  .steps { position: relative; padding-left: 36px; }
   .steps::before {
-    content: '';
-    position: absolute;
-    left: 10px; top: 0; bottom: 0;
-    width: 2px;
-    background: var(--border);
+    content: ''; position: absolute;
+    left: 12px; top: 12px; bottom: 12px; width: 2px;
+    background: linear-gradient(to bottom, var(--accent1), var(--border));
+    border-radius: 2px;
   }
   .step {
-    position: relative;
-    margin-bottom: 20px;
-    background: white;
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
+    position: relative; margin-bottom: 20px;
+    background: white; border: 1.5px solid var(--border);
+    border-radius: var(--r-md); padding: 18px 16px;
+    box-shadow: var(--shadow-sm); transition: box-shadow var(--ease);
   }
+  .step:hover { box-shadow: var(--shadow-md); }
   .step::before {
-    content: attr(data-n);
-    position: absolute;
-    left: -34px;
-    top: 16px;
-    width: 24px; height: 24px;
-    background: var(--accent1);
-    color: white;
-    border-radius: 50%;
+    content: attr(data-n); position: absolute;
+    left: -38px; top: 18px; width: 26px; height: 26px;
+    background: var(--accent1); color: white; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 11px;
-    font-weight: 700;
-    font-family: 'DM Mono', monospace;
+    font-size: 12px; font-weight: 700; font-family: 'DM Mono', monospace;
+    box-shadow: 0 2px 8px rgba(214,40,57,.35);
   }
-  .step h4 { font-weight: 700; font-size: 14px; margin-bottom: 6px; line-height: 1.4; }
-  .step p   { font-size: 13px; color: #444; line-height: 1.6; }
+  .step h4 { font-weight: 700; font-size: 14.5px; margin-bottom: 8px; line-height: 1.4; color: var(--ink); }
+  .step p   { font-size: 13.5px; color: #374151; line-height: 1.65; }
   .step .tag {
-    display: inline-block;
-    background: #f3f4f6;
-    color: var(--muted);
-    font-size: 10px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 20px;
-    margin-bottom: 6px;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.5px;
+    display: inline-block; background: #f1f5f9; color: #475569;
+    font-size: 10px; font-weight: 700; padding: 3px 10px;
+    border-radius: 20px; margin-bottom: 8px;
+    font-family: 'DM Mono', monospace; letter-spacing: .8px;
+    border: 1px solid #e2e8f0;
   }
 
-  /* ─── BACK TO TOP ────────────────────────────────── */
+  /* ─── BACK TO TOP ─────────────────────────────────── */
   #back-top {
     position: fixed;
-    bottom: calc(var(--bottom-nav-height) + 16px);
-    right: 16px;
-    width: 44px;
-    height: 44px;
-    background: var(--ink);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity .3s, transform .3s;
-    z-index: 150;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    bottom: calc(var(--bottom-nav-h) + 16px); right: 18px;
+    width: 46px; height: 46px;
+    background: var(--ink); color: white;
+    border: none; border-radius: 50%; font-size: 20px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity .3s, transform .3s, background var(--ease);
+    z-index: 150; box-shadow: 0 4px 20px rgba(26,26,46,.25);
   }
   #back-top.visible { opacity: 1; transform: translateY(0); }
+  #back-top:hover   { background: var(--accent1); }
 
-  /* ─── SECTION HEADING ─────────────────────────────── */
-  .subsection-title {
-    font-size: 16px;
-    font-weight: 700;
-    margin: 24px 0 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  /* ─── FOOTER ─────────────────────────────────────── */
+  /* ─── FOOTER ──────────────────────────────────────── */
   footer {
-    text-align: center;
-    padding: 24px 16px;
-    color: var(--muted);
-    font-size: 12px;
+    text-align: center; padding: 28px 20px;
+    color: var(--muted); font-size: 12.5px;
     border-top: 2px solid var(--border);
-    margin-top: 24px;
-    line-height: 1.7;
+    margin-top: 32px; line-height: 1.8;
+    background: white;
   }
 
-  /* ─── MEDIA QUERIES ──────────────────────────────── */
+  /* ─── RESPONSIVE ──────────────────────────────────── */
   @media(max-width: 640px) {
-    .top-nav { display: none; }
+    .top-nav    { display: none; }
     .bottom-nav { display: flex; }
-    body { padding-bottom: calc(var(--bottom-nav-height) + 8px); }
+    body        { padding-bottom: calc(var(--bottom-nav-h) + 12px); }
+    .section    { padding: 20px 16px 16px; }
+    .steps      { padding-left: 30px; }
+    .step::before { left: -32px; width: 22px; height: 22px; font-size: 11px; }
+    .card       { padding: 18px 14px; }
+    .mnemonic   { padding: 22px 14px; }
+    .poem-grid  { grid-template-columns: 1fr; }
+    .tool-grid  { grid-template-columns: 1fr; }
   }
   @media(min-width: 641px) {
     .bottom-nav { display: none; }
-    #back-top { bottom: 24px; }
+    #back-top   { bottom: 28px; }
+  }
+  @media(max-width: 460px) {
+    .actor-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media(max-width: 360px) {
+    .bnav-tab { font-size: 10px; }
+    .bnav-tab .bnav-icon { font-size: 20px; }
   }
 </style>
 </head>
 <body>
 
-<!-- Progress bar -->
 <div id="progress-bar"></div>
 
-<!-- HEADER -->
 <header>
   <div class="badge">BTS Communication · Bloc 01</div>
   <h1>Fiche de Révision<br>Complète</h1>
   <p>Plan de Communication · Cadre Légal · Outils de Veille · Acteurs</p>
 </header>
 
-<!-- TOP NAV (desktop) -->
 <nav class="top-nav">
-  <button id="tab-plan"    class="tab active"  onclick="showTab('plan', this)">📋 Plan de Com</button>
-  <button id="tab-legal"   class="tab"         onclick="showTab('legal', this)">⚖️ Cadre Légal</button>
-  <button id="tab-veille"  class="tab"         onclick="showTab('veille', this)">🔍 Veille &amp; Outils</button>
-  <button id="tab-acteurs" class="tab"         onclick="showTab('acteurs', this)">👥 Acteurs</button>
+  <button id="tab-plan"    class="tab active" onclick="showTab('plan',    this)">📋 Plan de Com</button>
+  <button id="tab-legal"   class="tab"        onclick="showTab('legal',   this)">⚖️ Cadre Légal</button>
+  <button id="tab-veille"  class="tab"        onclick="showTab('veille',  this)">🔍 Veille &amp; Outils</button>
+  <button id="tab-acteurs" class="tab"        onclick="showTab('acteurs', this)">👥 Acteurs</button>
 </nav>
 
-<!-- BOTTOM NAV (mobile) -->
 <div class="bottom-nav" role="navigation" aria-label="Navigation principale">
   <div class="bottom-nav-inner">
-    <button class="bnav-tab active" id="bnav-plan" onclick="showTab('plan', this, true)" aria-label="Plan de communication">
-      <span class="bnav-icon">📋</span>
-      <span>Plan</span>
+    <button class="bnav-tab active" id="bnav-plan"    onclick="showTab('plan',    this, true)" aria-label="Plan de communication">
+      <span class="bnav-icon">📋</span><span>Plan</span>
     </button>
-    <button class="bnav-tab" id="bnav-legal" onclick="showTab('legal', this, true)" aria-label="Cadre légal">
-      <span class="bnav-icon">⚖️</span>
-      <span>Légal</span>
+    <button class="bnav-tab"        id="bnav-legal"   onclick="showTab('legal',   this, true)" aria-label="Cadre légal">
+      <span class="bnav-icon">⚖️</span><span>Légal</span>
     </button>
-    <button class="bnav-tab" id="bnav-veille" onclick="showTab('veille', this, true)" aria-label="Veille et outils">
-      <span class="bnav-icon">🔍</span>
-      <span>Veille</span>
+    <button class="bnav-tab"        id="bnav-veille"  onclick="showTab('veille',  this, true)" aria-label="Veille et outils">
+      <span class="bnav-icon">🔍</span><span>Veille</span>
     </button>
-    <button class="bnav-tab" id="bnav-acteurs" onclick="showTab('acteurs', this, true)" aria-label="Acteurs">
-      <span class="bnav-icon">👥</span>
-      <span>Acteurs</span>
+    <button class="bnav-tab"        id="bnav-acteurs" onclick="showTab('acteurs', this, true)" aria-label="Acteurs">
+      <span class="bnav-icon">👥</span><span>Acteurs</span>
     </button>
   </div>
 </div>
 
-<!-- Back to top -->
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">↑</button>
 
 <!-- ======================== PLAN DE COMMUNICATION ======================== -->
@@ -602,7 +519,6 @@
   <div class="section-title"><span>📋</span> Le Plan de Communication</div>
   <div class="section-subtitle">Les étapes dans l'ordre chronologique — de l'analyse au bilan</div>
 
-  <!-- MOYEN MNÉMOTECHNIQUE -->
   <div class="mnemonic">
     <h4>Moyen mnémotechnique pour tout retenir</h4>
     <div class="acronym">D·P·P·O·C·M·B·K</div>
@@ -616,11 +532,10 @@
       <div class="letter-block"><div class="letter">B</div><div class="word">Budget</div></div>
       <div class="letter-block"><div class="letter">K</div><div class="word">KPIs</div></div>
     </div>
-    <p style="font-size:11px; opacity:0.5; margin-top:14px;">« Des Pandas Pas Ordinaires Construisent Magnifiquement Beaucoup de Kilomètres »</p>
+    <p style="font-size:11px;opacity:.5;margin-top:14px;">« Des Pandas Pas Ordinaires Construisent Magnifiquement Beaucoup de Kilomètres »</p>
   </div>
 
   <div class="steps">
-
     <div class="step" data-n="1">
       <span class="tag">DIAGNOSTIC</span>
       <h4>Étape 1 — Le Diagnostic (SWOT)</h4>
@@ -750,10 +665,9 @@
     </div>
   </div>
 
-  <!-- BRIEF CRÉATIF -->
   <div class="card card-accent-purple" style="margin-top:28px;">
     <h3><span class="step-num purple">+</span> Le Brief Créatif — Bonus indispensable</h3>
-    <p style="font-size:13px; color:#555; margin-bottom:12px;">Document transmis à l'agence ou au créatif pour cadrer la campagne.</p>
+    <p style="font-size:13px;color:#555;margin-bottom:12px;">Document transmis à l'agence ou au créatif pour cadrer la campagne.</p>
     <ul class="styled">
       <li><strong>La Promesse</strong> : L'idée centrale à faire passer. Ex : « Recyclea, le choix responsable et intelligent »</li>
       <li><strong>La Preuve</strong> : Ce qui rend la promesse crédible. Ex : Expertise, label RSE, 10 ans d'expérience</li>
@@ -865,7 +779,7 @@
 
   <div class="card card-accent-green" style="margin-bottom:20px;">
     <h3><span class="step-num green">💡</span> Pourquoi faire de la veille ?</h3>
-    <p style="font-size:14px; color:#444;">La veille permet de <strong>rester informé</strong> en continu sur le marché, la concurrence, les tendances et les performances de ses propres campagnes. C'est la base du diagnostic (étape 1 du plan de com).</p>
+    <p style="font-size:14px;color:#444;">La veille permet de <strong>rester informé</strong> en continu sur le marché, la concurrence, les tendances et les performances de ses propres campagnes. C'est la base du diagnostic (étape 1 du plan de com).</p>
   </div>
 
   <div class="subsection-title">📊 Analyse Audience &amp; Comportement</div>
@@ -874,7 +788,7 @@
       <div class="tool-name">Google Analytics</div>
       <span class="tool-type tt-analyse">Analyse Web</span>
       <div class="tool-desc">Mesure le trafic d'un site web : qui visite, d'où viennent les visiteurs, combien de temps restent-ils. <strong>Gratuit.</strong></div>
-      <div class="example" style="margin-top:10px; font-size:12px;">« Nous utiliserons Google Analytics pour mesurer le taux de rebond et le temps de visite sur la landing page de la campagne. »</div>
+      <div class="example" style="font-size:12px;">« Nous utiliserons Google Analytics pour mesurer le taux de rebond et le temps de visite sur la landing page de la campagne. »</div>
     </div>
     <div class="tool-card">
       <div class="tool-name">Hotjar / Crazy Egg</div>
@@ -890,7 +804,7 @@
       <div class="tool-name">Matomo</div>
       <span class="tool-type tt-analyse">RGPD friendly</span>
       <div class="tool-desc">Alternative à Google Analytics respectueuse du RGPD. Les données restent sur vos serveurs. Idéal pour les organisations publiques.</div>
-      <div class="example" style="margin-top:10px; font-size:12px;">« Nous choisissons Matomo plutôt que GA car il est 100% RGPD-compliant, sans transfert de données vers des serveurs américains. »</div>
+      <div class="example" style="font-size:12px;">« Nous choisissons Matomo plutôt que GA car il est 100% RGPD-compliant, sans transfert de données vers des serveurs américains. »</div>
     </div>
   </div>
 
@@ -900,13 +814,13 @@
       <div class="tool-name">Médiamétrie (Médiamat)</div>
       <span class="tool-type tt-mesure">Audience TV/Radio</span>
       <div class="tool-desc">Mesure les audiences télévisées et radio en France. Fournit la <strong>PDA</strong> (Part d'Audience) et la durée d'écoute moyenne.</div>
-      <div class="example" style="margin-top:10px; font-size:12px;">« Selon Médiamétrie, TF1 réalise une PDA de 20% en prime time — c'est pourquoi nous y diffuserons notre spot. »</div>
+      <div class="example" style="font-size:12px;">« Selon Médiamétrie, TF1 réalise une PDA de 20% en prime time — c'est pourquoi nous y diffuserons notre spot. »</div>
     </div>
     <div class="tool-card">
       <div class="tool-name">Kantar Media</div>
       <span class="tool-type tt-mesure">Pression publicitaire</span>
       <div class="tool-desc">Mesure les investissements publicitaires de la concurrence. Permet de savoir combien dépense un concurrent et sur quels médias.</div>
-      <div class="example" style="margin-top:10px; font-size:12px;">« Kantar révèle que notre concurrent principal investit 60% de son budget sur le digital — nous ferons de même. »</div>
+      <div class="example" style="font-size:12px;">« Kantar révèle que notre concurrent principal investit 60% de son budget sur le digital — nous ferons de même. »</div>
     </div>
     <div class="tool-card">
       <div class="tool-name">Kantar Sofres / BVA</div>
@@ -945,7 +859,7 @@
       <div class="tool-name">Brevo (ex-Sendinblue)</div>
       <span class="tool-type tt-emailing">Emailing</span>
       <div class="tool-desc">Solution française, plus économique. Email + SMS + CRM. RGPD-compliant. Idéal pour les campagnes BtoB.</div>
-      <div class="example" style="margin-top:10px; font-size:12px;">« Nous utiliserons Brevo pour notre campagne d'emailing B2B car il est RGPD-compliant et propose un suivi précis des KPIs. »</div>
+      <div class="example" style="font-size:12px;">« Nous utiliserons Brevo pour notre campagne d'emailing B2B car il est RGPD-compliant et propose un suivi précis des KPIs. »</div>
     </div>
     <div class="tool-card">
       <div class="tool-name">ActiveCampaign</div>
@@ -993,84 +907,32 @@
 
   <div class="card card-accent-purple" style="margin-bottom:24px;">
     <h3><span class="step-num purple">💡</span> Le principe clé</h3>
-    <p style="font-size:14px; color:#444;">À l'examen, tu dois non seulement nommer les acteurs mais <strong>expliquer pourquoi tu les mobilises</strong> pour cette campagne précise. Un acteur sans justification ne rapporte aucun point.</p>
+    <p style="font-size:14px;color:#444;">À l'examen, tu dois non seulement nommer les acteurs mais <strong>expliquer pourquoi tu les mobilises</strong> pour cette campagne précise. Un acteur sans justification ne rapporte aucun point.</p>
   </div>
 
   <div class="subsection-title">🏢 Les acteurs côté Annonceur</div>
   <div class="actor-grid">
-    <div class="actor-card">
-      <div class="actor-icon">👔</div>
-      <div class="actor-title">Direction Marketing / Com</div>
-      <div class="actor-desc">Définit la stratégie, valide les grandes orientations, gère le budget global.</div>
-    </div>
-    <div class="actor-card">
-      <div class="actor-icon">✍️</div>
-      <div class="actor-title">Chef de Projet / Traffic Manager</div>
-      <div class="actor-desc">Coordonne les intervenants, gère les plannings et s'assure que tout est livré en temps et en heure.</div>
-    </div>
-    <div class="actor-card">
-      <div class="actor-icon">📊</div>
-      <div class="actor-title">Chargé d'Études</div>
-      <div class="actor-desc">Réalise la veille et les études de marché pour alimenter le diagnostic.</div>
-    </div>
-    <div class="actor-card">
-      <div class="actor-icon">💻</div>
-      <div class="actor-title">Community Manager</div>
-      <div class="actor-desc">Gère les réseaux sociaux au quotidien : publications, interactions, modération.</div>
-    </div>
+    <div class="actor-card"><div class="actor-icon">👔</div><div class="actor-title">Direction Marketing / Com</div><div class="actor-desc">Définit la stratégie, valide les grandes orientations, gère le budget global.</div></div>
+    <div class="actor-card"><div class="actor-icon">✍️</div><div class="actor-title">Chef de Projet / Traffic Manager</div><div class="actor-desc">Coordonne les intervenants, gère les plannings et s'assure que tout est livré en temps et en heure.</div></div>
+    <div class="actor-card"><div class="actor-icon">📊</div><div class="actor-title">Chargé d'Études</div><div class="actor-desc">Réalise la veille et les études de marché pour alimenter le diagnostic.</div></div>
+    <div class="actor-card"><div class="actor-icon">💻</div><div class="actor-title">Community Manager</div><div class="actor-desc">Gère les réseaux sociaux au quotidien : publications, interactions, modération.</div></div>
   </div>
 
   <div class="subsection-title">🎨 Les acteurs côté Agence</div>
   <div class="actor-grid">
-    <div class="actor-card">
-      <div class="actor-icon">🏛️</div>
-      <div class="actor-title">Agence de Communication (360°)</div>
-      <div class="actor-desc">Gère toute la stratégie et la production. Mobilisée pour des campagnes d'envergure multi-support.</div>
-    </div>
-    <div class="actor-card">
-      <div class="actor-icon">🎭</div>
-      <div class="actor-title">Directeur Artistique (DA)</div>
-      <div class="actor-desc">Crée la direction visuelle de la campagne. Travaille avec un rédacteur pour former le binôme créatif.</div>
-    </div>
-    <div class="actor-card">
-      <div class="actor-icon">✒️</div>
-      <div class="actor-title">Concepteur-Rédacteur</div>
-      <div class="actor-desc">Écrit les textes (slogans, accroche, corps de texte). Binôme du DA dans la conception créative.</div>
-    </div>
-    <div class="actor-card">
-      <div class="actor-icon">📱</div>
-      <div class="actor-title">Agence Digitale</div>
-      <div class="actor-desc">Spécialisée web, réseaux sociaux, SEO/SEA, campagnes digitales. Mobilisée quand le digital est central.</div>
-    </div>
-    <div class="actor-card">
-      <div class="actor-icon">📺</div>
-      <div class="actor-title">Régie Publicitaire</div>
-      <div class="actor-desc">Commercialise les espaces publicitaires pour un média (TF1 Publicité, France Pub…). Gère l'achat d'espace.</div>
-    </div>
-    <div class="actor-card">
-      <div class="actor-icon">🖨️</div>
-      <div class="actor-title">Imprimeur / Façonnier</div>
-      <div class="actor-desc">Produit les supports print (flyers, affiches, brochures). Mobilisé pour toute campagne hors-médias print.</div>
-    </div>
+    <div class="actor-card"><div class="actor-icon">🏛️</div><div class="actor-title">Agence de Communication (360°)</div><div class="actor-desc">Gère toute la stratégie et la production. Mobilisée pour des campagnes d'envergure multi-support.</div></div>
+    <div class="actor-card"><div class="actor-icon">🎭</div><div class="actor-title">Directeur Artistique (DA)</div><div class="actor-desc">Crée la direction visuelle de la campagne. Travaille avec un rédacteur pour former le binôme créatif.</div></div>
+    <div class="actor-card"><div class="actor-icon">✒️</div><div class="actor-title">Concepteur-Rédacteur</div><div class="actor-desc">Écrit les textes (slogans, accroche, corps de texte). Binôme du DA dans la conception créative.</div></div>
+    <div class="actor-card"><div class="actor-icon">📱</div><div class="actor-title">Agence Digitale</div><div class="actor-desc">Spécialisée web, réseaux sociaux, SEO/SEA, campagnes digitales. Mobilisée quand le digital est central.</div></div>
+    <div class="actor-card"><div class="actor-icon">📺</div><div class="actor-title">Régie Publicitaire</div><div class="actor-desc">Commercialise les espaces publicitaires pour un média (TF1 Publicité, France Pub…). Gère l'achat d'espace.</div></div>
+    <div class="actor-card"><div class="actor-icon">🖨️</div><div class="actor-title">Imprimeur / Façonnier</div><div class="actor-desc">Produit les supports print (flyers, affiches, brochures). Mobilisé pour toute campagne hors-médias print.</div></div>
   </div>
 
   <div class="subsection-title">📣 Les acteurs Relais (prescripteurs)</div>
   <div class="actor-grid">
-    <div class="actor-card">
-      <div class="actor-icon">📰</div>
-      <div class="actor-title">Journalistes &amp; RP</div>
-      <div class="actor-desc">Relaient le message dans la presse. Mobilisés via des communiqués et dossiers de presse.</div>
-    </div>
-    <div class="actor-card">
-      <div class="actor-icon">🌟</div>
-      <div class="actor-title">Influenceurs</div>
-      <div class="actor-desc">Relaient le message auprès de leur communauté. Pertinents si la cible est présente sur les réseaux sociaux.</div>
-    </div>
-    <div class="actor-card">
-      <div class="actor-icon">🤝</div>
-      <div class="actor-title">Partenaires &amp; Associations</div>
-      <div class="actor-desc">Apportent de la crédibilité et un réseau complémentaire (ex : association environnementale pour une marque RSE).</div>
-    </div>
+    <div class="actor-card"><div class="actor-icon">📰</div><div class="actor-title">Journalistes &amp; RP</div><div class="actor-desc">Relaient le message dans la presse. Mobilisés via des communiqués et dossiers de presse.</div></div>
+    <div class="actor-card"><div class="actor-icon">🌟</div><div class="actor-title">Influenceurs</div><div class="actor-desc">Relaient le message auprès de leur communauté. Pertinents si la cible est présente sur les réseaux sociaux.</div></div>
+    <div class="actor-card"><div class="actor-icon">🤝</div><div class="actor-title">Partenaires &amp; Associations</div><div class="actor-desc">Apportent de la crédibilité et un réseau complémentaire (ex : association environnementale pour une marque RSE).</div></div>
   </div>
 
   <div class="card card-accent-left" style="margin-top:24px;">
@@ -1095,39 +957,25 @@
 </footer>
 
 <script>
-  // ── Tab switching ──────────────────────────────────────
-  const tabMap = { plan: 'plan', legal: 'legal', veille: 'veille', acteurs: 'acteurs' };
-
   function showTab(id, btn, isMobile) {
-    // Hide all sections
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-
-    // Desktop tabs
     document.querySelectorAll('.top-nav .tab').forEach(t => t.classList.remove('active'));
-    const desktopTab = document.getElementById('tab-' + id);
-    if (desktopTab) desktopTab.classList.add('active');
-
-    // Bottom nav tabs
+    const dt = document.getElementById('tab-' + id);
+    if (dt) dt.classList.add('active');
     document.querySelectorAll('.bnav-tab').forEach(t => t.classList.remove('active'));
-    const bnavTab = document.getElementById('bnav-' + id);
-    if (bnavTab) bnavTab.classList.add('active');
-
+    const bt = document.getElementById('bnav-' + id);
+    if (bt) bt.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // ── Progress bar ───────────────────────────────────────
-  const progressBar = document.getElementById('progress-bar');
+  const bar = document.getElementById('progress-bar');
+  const btn = document.getElementById('back-top');
   window.addEventListener('scroll', () => {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = pct + '%';
-
-    // Back to top button
-    const btn = document.getElementById('back-top');
-    if (scrollTop > 300) btn.classList.add('visible');
-    else btn.classList.remove('visible');
+    const st  = document.documentElement.scrollTop || document.body.scrollTop;
+    const dh  = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    bar.style.width = dh > 0 ? (st / dh * 100) + '%' : '0%';
+    btn.classList.toggle('visible', st > 300);
   });
 </script>
 </body>
