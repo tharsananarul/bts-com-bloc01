@@ -1,4 +1,4 @@
-import { Section, SectionTitle, SectionSubtitle, Card, CardTitle, Example, Warning, Tip, StyledList } from '../ui'
+import { Section, SectionTitle, SectionSubtitle, Card, CardTitle, Example, Warning, Tip, StyledList, TableWrap } from '../ui'
 import Mnemonic from './Mnemonic'
 import SmartGrid from './SmartGrid'
 import CiblesVisual from './CiblesVisual'
@@ -100,6 +100,46 @@ export default function PlanSection() {
           <h4>Étape 6 — Les Moyens (POEM)</h4>
           <p>On choisit les canaux selon la cible et le budget. La classification <strong>POEM</strong> est incontournable :</p>
           <PoemGrid />
+          
+          <div style={{ marginTop: 24 }}>
+            <h5 style={{ fontSize: 14, fontWeight: 700, marginBottom: 12, color: 'var(--ink)' }}>MÉDIAS (Mass media)</h5>
+            <TableWrap>
+              <thead><tr><th>Moyen</th><th>Exemples concrets</th></tr></thead>
+              <tbody>
+                <tr><td style={{ fontWeight: 600 }}>Télévision</td><td>Spot publicitaire, parrainage d'émission</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Radio</td><td>Spot audio, jingle, sponsoring d'émission</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Presse</td><td>Annonce presse magazine, presse quotidienne, presse spécialisée</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Cinéma</td><td>Spot avant séance</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Affichage OOH</td><td>Panneaux 4x3, abribus, sucettes, mobilier urbain</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Affichage DOOH</td><td>Écrans digitaux animés (gares, centres commerciaux, aéroports)</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Internet</td><td>Site web, SEO, SEA (Google Ads), display, bannières</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Réseaux sociaux</td><td>Posts organiques + sponsorisés (LinkedIn, Instagram, Facebook, TikTok)</td></tr>
+              </tbody>
+            </TableWrap>
+          </div>
+
+          <div style={{ marginTop: 24, marginBottom: 16 }}>
+            <h5 style={{ fontSize: 14, fontWeight: 700, marginBottom: 12, color: 'var(--ink)' }}>HORS-MÉDIAS</h5>
+            <TableWrap>
+              <thead><tr><th>Moyen</th><th>Exemples concrets</th></tr></thead>
+              <tbody>
+                <tr><td style={{ fontWeight: 600 }}>Marketing direct</td><td>Emailing, SMS, courrier postal, phoning</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Relations presse (RP)</td><td>Communiqué de presse, dossier de presse, conférence de presse</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Relations publiques</td><td>Lobbying, événements institutionnels, portes ouvertes</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Événementiel</td><td>Lancement produit, soirée, festival, stand</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Foires &amp; Salons</td><td>Stand sur un salon professionnel ou grand public</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Street marketing</td><td>Distribution de flyers, opérations en rue, flash mob</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Promotion des ventes</td><td>Réductions, bons de réduction, jeux-concours, offres spéciales</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Édition</td><td>Brochures, plaquettes, catalogues, flyers</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Parrainage (Sponsoring)</td><td>Logo sur un maillot, naming d'un événement sportif</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Mécénat</td><td>Don à une association, mécénat culturel (sans contrepartie directe)</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Partenariats</td><td>Collaborations avec d'autres marques ou institutions</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Influence</td><td>Partenariat avec des influenceurs, UGC (contenu généré par les utilisateurs)</td></tr>
+                <tr><td style={{ fontWeight: 600 }}>Communication interne</td><td>Intranet, journal interne, séminaire, réunion d'équipe</td></tr>
+              </tbody>
+            </TableWrap>
+          </div>
+
           <Warning>Justifie toujours tes choix de moyens ! Dire « je choisis LinkedIn » sans expliquer pourquoi = 0 point. Dire « je choisis LinkedIn car 80% des DSI y sont actifs » = plein de points.</Warning>
         </div>
 
