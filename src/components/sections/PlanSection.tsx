@@ -192,16 +192,16 @@ export default function PlanSection() {
           
           <h5 style={{ fontSize: 14, fontWeight: 700, marginTop: 16, marginBottom: 8, color: 'var(--ink)' }}>📊 KPIs Quantitatifs (ce qu'on mesure en chiffres)</h5>
           <StyledList items={[
-            <><strong>Cognitif</strong> → Nombre d'impressions, taux de notoriété, portée, nombre de vues</>,
-            <><strong>Affectif</strong> → Taux d'engagement, nombre de likes/partages, score de satisfaction</>,
-            <><strong>Conatif</strong> → Taux de conversion, nombre de leads, CTR, chiffre d'affaires généré, nombre de ventes</>,
+            'Nombre d\'impressions, taux de notoriété, portée, nombre de vues',
+            'Taux d\'engagement, nombre de likes/partages, score de satisfaction',
+            'Taux de conversion, nombre de leads, CTR, chiffre d\'affaires généré, nombre de ventes',
           ]} />
 
           <h5 style={{ fontSize: 14, fontWeight: 700, marginTop: 16, marginBottom: 8, color: 'var(--ink)' }}>💬 KPIs Qualitatifs (ce qu'on mesure en perception)</h5>
           <StyledList items={[
-            <><strong>Cognitif</strong> → Qualité de la mémorisation du message, clarté du message perçu</>,
-            <><strong>Affectif</strong> → Sentiment analysis (positif/négatif/neutre), perception de l'image de marque, avis clients</>,
-            <><strong>Conatif</strong> → Qualité des leads générés, niveau de satisfaction après achat</>,
+            'Qualité de la mémorisation du message, clarté du message perçu',
+            'Sentiment analysis (positif/négatif/neutre), perception de l\'image de marque, avis clients',
+            'Qualité des leads générés, niveau de satisfaction après achat',
           ]} />
 
           <Example>
