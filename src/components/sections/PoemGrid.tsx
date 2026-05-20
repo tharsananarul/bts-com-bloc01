@@ -12,8 +12,8 @@ export default function PoemGrid() {
       {CARDS.map(({ cls, letter, title, desc }) => (
         <div key={title} className={`${styles.card} ${cls}`}>
           <div className={styles.letter}>{letter}</div>
-          <h4 className={styles.title}>{title}</h4>
-          <p className={styles.desc}>{desc}</p>
+          <div className={styles.title}>{title}</div>
+          <div className={styles.desc}>{desc}</div>
         </div>
       ))}
     </div>
