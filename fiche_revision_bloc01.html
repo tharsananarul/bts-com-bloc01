@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Fiche de révision complète BTS Communication Bloc 01 — Plan de communication, cadre légal, outils de veille et acteurs.">
+<title>Fiche Révision BTS Com — Bloc 01</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #faf8f3;
+    --accent1: #e63946;
+    --accent2: #2a9d8f;
+    --accent3: #e9c46a;
+    --accent4: #6a4c93;
+    --muted: #6b7280;
+    --border: #e5e0d5;
+    --card: #ffffff;
+    --nav-height: 60px;
+    --bottom-nav-height: 68px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 15px;
+    padding-bottom: calc(var(--bottom-nav-height) + 16px);
+  }
+
+  /* ─── HEADER ─────────────────────────────────────── */
+  header {
+    background: var(--ink);
+    color: white;
+    padding: 40px 20px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    background: var(--accent1);
+    border-radius: 50%;
+    opacity: 0.15;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 40%;
+    width: 180px; height: 180px;
+    background: var(--accent3);
+    border-radius: 50%;
+    opacity: 0.1;
+  }
+  .badge {
+    display: inline-block;
+    background: var(--accent1);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 7vw, 48px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  header p {
+    color: rgba(255,255,255,0.65);
+    font-size: 13px;
+    font-weight: 300;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  /* ─── PROGRESS BAR ───────────────────────────────── */
+  #progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--accent1);
+    z-index: 999;
+    transition: width 0.1s;
+    width: 0%;
+  }
+
+  /* ─── TOP NAV (desktop) ──────────────────────────── */
+  .top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    border-bottom: 2px solid var(--border);
+    padding: 0 16px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .top-nav::-webkit-scrollbar { display: none; }
+  .tab {
+    padding: 14px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: var(--muted);
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: all .2s;
+    font-family: 'DM Sans', sans-serif;
+    touch-action: manipulation;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  .tab:hover { color: var(--ink); }
+  .tab.active { color: var(--accent1); border-bottom-color: var(--accent1); }
+
+  /* ─── BOTTOM NAV (mobile) ────────────────────────── */
+  .bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--bottom-nav-height);
+    background: white;
+    border-top: 1.5px solid var(--border);
+    z-index: 200;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    padding: 0 4px;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .bottom-nav-inner {
+    display: flex;
+    height: 100%;
+    align-items: stretch;
+  }
+  .bnav-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    border: none;
+    background: none;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+    border-radius: 12px;
+    margin: 4px 2px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .bnav-tab .bnav-icon { font-size: 20px; line-height: 1; }
+  .bnav-tab.active {
+    color: var(--accent1);
+    background: rgba(230, 57, 70, 0.08);
+  }
+  .bnav-tab:active { transform: scale(0.93); }
+
+  /* ─── SECTIONS ───────────────────────────────────── */
+  .section { display: none; padding: 24px 16px 16px; max-width: 900px; margin: 0 auto; }
+  .section.active { display: block; animation: fadeIn .3s ease; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+  /* ─── SECTION TITLES ─────────────────────────────── */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 6vw, 28px);
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title span { font-size: 28px; }
+  .section-subtitle {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid var(--border);
+    line-height: 1.5;
+  }
+
+  /* ─── CARDS ──────────────────────────────────────── */
+  .card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 16px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-accent-left  { border-left: 5px solid var(--accent1); }
+  .card-accent-green { border-left: 5px solid var(--accent2); }
+  .card-accent-yellow{ border-left: 5px solid var(--accent3); }
+  .card-accent-purple{ border-left: 5px solid var(--accent4); }
+
+  .card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+  }
+  .card h3 .step-num {
+    background: var(--accent1);
+    color: white;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-num.green  { background: var(--accent2); }
+  .step-num.yellow { background: #c8963a; }
+  .step-num.purple { background: var(--accent4); }
+  .step-num.red    { background: var(--accent1); }
+
+  /* ─── LISTS ──────────────────────────────────────── */
+  ul.styled { list-style: none; padding: 0; }
+  ul.styled li {
+    padding: 8px 0 8px 22px;
+    position: relative;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+  ul.styled li:last-child { border-bottom: none; }
+  ul.styled li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent1);
+    font-weight: 700;
+  }
+
+  /* ─── NOTICE BOXES ───────────────────────────────── */
+  .example, .warning, .tip {
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .example {
+    background: #f0faf8;
+    border: 1px solid #b7e4dc;
+    color: #1a5e55;
+  }
+  .example::before { content: '💡 Exemple : '; font-weight: 700; }
+  .warning {
+    background: #fff5f5;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+  }
+  .warning::before { content: '⚠️ Attention : '; font-weight: 700; }
+  .tip {
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    color: #78350f;
+  }
+  .tip::before { content: '✏️ Astuce examen : '; font-weight: 700; }
+
+  /* ─── MNEMONIC ───────────────────────────────────── */
+  .mnemonic {
+    background: linear-gradient(135deg, #1a1a2e, #2a1a4e);
+    color: white;
+    border-radius: 16px;
+    padding: 24px 16px;
+    margin: 24px 0;
+    text-align: center;
+  }
+  .mnemonic h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6; margin-bottom: 10px; }
+  .mnemonic .acronym {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 8vw, 36px);
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: var(--accent3);
+    margin-bottom: 16px;
+  }
+  .mnemonic .letters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .mnemonic .letter-block { text-align: center; min-width: 36px; }
+  .mnemonic .letter {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--accent3);
+    font-family: 'DM Mono', monospace;
+  }
+  .mnemonic .word { font-size: 10px; opacity: 0.7; margin-top: 2px; }
+
+  /* ─── SMART GRID ─────────────────────────────────── */
+  .smart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .smart-item {
+    background: var(--paper);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 8px;
+    text-align: center;
+  }
+  .smart-item .letter { font-size: 26px; font-weight: 900; font-family: 'Playfair Display', serif; }
+  .smart-item .label { font-size: 12px; font-weight: 600; margin: 4px 0 2px; }
+  .smart-item .desc  { font-size: 11px; color: var(--muted); line-height: 1.3; }
+
+  /* ─── RESPONSIVE TABLES ──────────────────────────── */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 12px; border-radius: 8px; }
+  .law-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 400px; }
+  .law-table th {
+    background: var(--ink);
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .law-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .law-table tr:nth-child(even) td { background: #faf8f3; }
+  .law-table .loi-name { font-weight: 700; color: var(--accent1); white-space: nowrap; }
+
+  /* ─── TOOL CARDS ─────────────────────────────────── */
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+    margin-top: 14px;
+  }
+  @media(max-width: 520px) { .tool-grid { grid-template-columns: 1fr; } }
+  .tool-card {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .tool-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .tool-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent4);
+    margin-bottom: 8px;
+  }
+  .tool-type {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .tt-analyse  { background: #e0f2fe; color: #0369a1; }
+  .tt-planning { background: #d1fae5; color: #065f46; }
+  .tt-emailing { background: #fce7f3; color: #9d174d; }
+  .tt-mesure   { background: #ede9fe; color: #5b21b6; }
+  .tt-veille   { background: #fef3c7; color: #92400e; }
+  .tool-desc   { font-size: 13px; color: #555; line-height: 1.5; }
+
+  /* ─── ACTOR CARDS ────────────────────────────────── */
+  .actor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+  @media(max-width: 460px) { .actor-grid { grid-template-columns: 1fr 1fr; } }
+  .actor-card {
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    background: white;
+  }
+  .actor-icon  { font-size: 26px; margin-bottom: 8px; }
+  .actor-title { font-weight: 700; font-size: 13px; margin-bottom: 5px; line-height: 1.3; }
+  .actor-desc  { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+  /* ─── CIBLE VISUAL ───────────────────────────────── */
+  .cibles-visual { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+  .cible-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .cible-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+  .cible-info { flex: 1; }
+  .cible-name { font-weight: 700; font-size: 13px; margin-bottom: 3px; }
+  .cible-desc { font-size: 12px; color: #555; line-height: 1.4; }
+
+  /* ─── POEM GRID ──────────────────────────────────── */
+  .poem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+  @media(max-width: 520px) { .poem-grid { grid-template-columns: 1fr; } }
+  .poem-card { border-radius: 14px; padding: 18px 14px; color: white; text-align: center; }
+  .poem-card.paid   { background: var(--accent1); }
+  .poem-card.owned  { background: var(--accent2); }
+  .poem-card.earned { background: var(--accent4); }
+  .poem-card .poem-letter { font-size: 38px; font-family: 'Playfair Display', serif; font-weight: 900; }
+  .poem-card h4 { font-size: 13px; font-weight: 700; margin: 6px 0 4px; }
+  .poem-card p  { font-size: 12px; opacity: 0.88; line-height: 1.5; }
+
+  /* ─── PROGRESS STEPS ─────────────────────────────── */
+  .steps { position: relative; padding-left: 32px; }
+  .steps::before {
+    content: '';
+    position: absolute;
+    left: 10px; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .step {
+    position: relative;
+    margin-bottom: 20px;
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .step::before {
+    content: attr(data-n);
+    position: absolute;
+    left: -34px;
+    top: 16px;
+    width: 24px; height: 24px;
+    background: var(--accent1);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'DM Mono', monospace;
+  }
+  .step h4 { font-weight: 700; font-size: 14px; margin-bottom: 6px; line-height: 1.4; }
+  .step p   { font-size: 13px; color: #444; line-height: 1.6; }
+  .step .tag {
+    display: inline-block;
+    background: #f3f4f6;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── BACK TO TOP ────────────────────────────────── */
+  #back-top {
+    position: fixed;
+    bottom: calc(var(--bottom-nav-height) + 16px);
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    background: var(--ink);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .3s, transform .3s;
+    z-index: 150;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+  #back-top.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── SECTION HEADING ─────────────────────────────── */
+  .subsection-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 24px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ─── FOOTER ─────────────────────────────────────── */
+  footer {
+    text-align: center;
+    padding: 24px 16px;
+    color: var(--muted);
+    font-size: 12px;
+    border-top: 2px solid var(--border);
+    margin-top: 24px;
+    line-height: 1.7;
+  }
+
+  /* ─── MEDIA QUERIES ──────────────────────────────── */
+  @media(max-width: 640px) {
+    .top-nav { display: none; }
+    .bottom-nav { display: flex; }
+    body { padding-bottom: calc(var(--bottom-nav-height) + 8px); }
+  }
+  @media(min-width: 641px) {
+    .bottom-nav { display: none; }
+    #back-top { bottom: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div id="progress-bar"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="badge">BTS Communication · Bloc 01</div>
+  <h1>Fiche de Révision<br>Complète</h1>
+  <p>Plan de Communication · Cadre Légal · Outils de Veille · Acteurs</p>
+</header>
+
+<!-- TOP NAV (desktop) -->
+<nav class="top-nav">
+  <button id="tab-plan"    class="tab active"  onclick="showTab('plan', this)">📋 Plan de Com</button>
+  <button id="tab-legal"   class="tab"         onclick="showTab('legal', this)">⚖️ Cadre Légal</button>
+  <button id="tab-veille"  class="tab"         onclick="showTab('veille', this)">🔍 Veille &amp; Outils</button>
+  <button id="tab-acteurs" class="tab"         onclick="showTab('acteurs', this)">👥 Acteurs</button>
+</nav>
+
+<!-- BOTTOM NAV (mobile) -->
+<div class="bottom-nav" role="navigation" aria-label="Navigation principale">
+  <div class="bottom-nav-inner">
+    <button class="bnav-tab active" id="bnav-plan" onclick="showTab('plan', this, true)" aria-label="Plan de communication">
+      <span class="bnav-icon">📋</span>
+      <span>Plan</span>
+    </button>
+    <button class="bnav-tab" id="bnav-legal" onclick="showTab('legal', this, true)" aria-label="Cadre légal">
+      <span class="bnav-icon">⚖️</span>
+      <span>Légal</span>
+    </button>
+    <button class="bnav-tab" id="bnav-veille" onclick="showTab('veille', this, true)" aria-label="Veille et outils">
+      <span class="bnav-icon">🔍</span>
+      <span>Veille</span>
+    </button>
+    <button class="bnav-tab" id="bnav-acteurs" onclick="showTab('acteurs', this, true)" aria-label="Acteurs">
+      <span class="bnav-icon">👥</span>
+      <span>Acteurs</span>
+    </button>
+  </div>
+</div>
+
+<!-- Back to top -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">↑</button>
+
+<!-- ======================== PLAN DE COMMUNICATION ======================== -->
+<div id="plan" class="section active">
+  <div class="section-title"><span>📋</span> Le Plan de Communication</div>
+  <div class="section-subtitle">Les étapes dans l'ordre chronologique — de l'analyse au bilan</div>
+
+  <!-- MOYEN MNÉMOTECHNIQUE -->
+  <div class="mnemonic">
+    <h4>Moyen mnémotechnique pour tout retenir</h4>
+    <div class="acronym">D·P·P·O·C·M·B·K</div>
+    <div class="letters">
+      <div class="letter-block"><div class="letter">D</div><div class="word">Diagnostic</div></div>
+      <div class="letter-block"><div class="letter">P</div><div class="word">Problème</div></div>
+      <div class="letter-block"><div class="letter">P</div><div class="word">Positionn.</div></div>
+      <div class="letter-block"><div class="letter">O</div><div class="word">Objectifs</div></div>
+      <div class="letter-block"><div class="letter">C</div><div class="word">Cibles</div></div>
+      <div class="letter-block"><div class="letter">M</div><div class="word">Moyens</div></div>
+      <div class="letter-block"><div class="letter">B</div><div class="word">Budget</div></div>
+      <div class="letter-block"><div class="letter">K</div><div class="word">KPIs</div></div>
+    </div>
+    <p style="font-size:11px; opacity:0.5; margin-top:14px;">« Des Pandas Pas Ordinaires Construisent Magnifiquement Beaucoup de Kilomètres »</p>
+  </div>
+
+  <div class="steps">
+
+    <div class="step" data-n="1">
+      <span class="tag">DIAGNOSTIC</span>
+      <h4>Étape 1 — Le Diagnostic (SWOT)</h4>
+      <p>On photographie la situation de l'organisation <strong>avant</strong> de faire quoi que ce soit. On utilise la matrice <strong>SWOT</strong> (Forces / Faiblesses / Opportunités / Menaces).</p>
+      <ul class="styled" style="margin-top:10px;">
+        <li><strong>Forces &amp; Faiblesses</strong> = internes (ce que l'on maîtrise)</li>
+        <li><strong>Opportunités &amp; Menaces</strong> = externes (le marché, l'environnement)</li>
+      </ul>
+      <div class="example">Une marque de sport voit que le running est en plein boom (opportunité), mais qu'elle est peu connue des jeunes (faiblesse). Son SWOT le fait apparaître clairement.</div>
+      <div class="tip">À l'examen : colorise ton SWOT avec 2 couleurs (vert = positif, rouge = négatif). Tu marques des points en lisibilité.</div>
+    </div>
+
+    <div class="step" data-n="2">
+      <span class="tag">PROBLÈME</span>
+      <h4>Étape 2 — Le Problème de Communication</h4>
+      <p>C'est <strong>le défi central</strong> que ta campagne doit résoudre. Il naît de la tension entre une ambition et un obstacle. Formule toujours : <strong>« Comment... alors que... ? »</strong></p>
+      <div class="example">Comment faire de Recyclea LA référence du reconditionnement B2B alors que les entreprises ont une image vieillotte et méfiante du reconditionné ?</div>
+      <div class="tip">Cette phrase doit apparaître dans ta copie dès le début. C'est le fil conducteur de toute ta réponse.</div>
+    </div>
+
+    <div class="step" data-n="3">
+      <span class="tag">POSITIONNEMENT</span>
+      <h4>Étape 3 — Le Positionnement</h4>
+      <p>La place que la marque veut occuper <strong>dans l'esprit de la cible</strong>. Un bon positionnement répond aux 4 critères :</p>
+      <div class="smart-grid" style="margin-top:10px;">
+        <div class="smart-item"><div class="letter" style="color:var(--accent2)">C</div><div class="label">Crédible</div><div class="desc">Justifié par des preuves réelles</div></div>
+        <div class="smart-item"><div class="letter" style="color:var(--accent1)">D</div><div class="label">Distinctif</div><div class="desc">Différent de la concurrence</div></div>
+        <div class="smart-item"><div class="letter" style="color:var(--accent3)">A</div><div class="label">Attractif</div><div class="desc">Répond à un besoin réel</div></div>
+        <div class="smart-item"><div class="letter" style="color:var(--accent4)">D</div><div class="label">Durable</div><div class="desc">Pas un simple effet de mode</div></div>
+      </div>
+      <div class="example">Recyclea : « Le partenaire IT des entreprises qui veulent croître de façon responsable. » → Crédible (expertise), Distinctif (seul à associer IT + RSE), Attractif (répond aux obligations RSE des entreprises).</div>
+    </div>
+
+    <div class="step" data-n="4">
+      <span class="tag">OBJECTIFS SMART</span>
+      <h4>Étape 4 — Les Objectifs SMART</h4>
+      <p>On ne communique jamais pour rien. Les objectifs se classent en <strong>3 niveaux psychologiques</strong> :</p>
+      <ul class="styled" style="margin-top:10px;">
+        <li><strong>Cognitif</strong> (Faire SAVOIR) → Informer, faire connaître. Ex : « augmenter la notoriété de 20% »</li>
+        <li><strong>Affectif</strong> (Faire AIMER) → Modifier l'image, créer de la sympathie. Ex : « rajeunir l'image de marque »</li>
+        <li><strong>Conatif</strong> (Faire AGIR) → Pousser à l'achat, à l'inscription. Ex : « générer 200 leads en 3 mois »</li>
+      </ul>
+      <div class="smart-grid" style="margin-top:14px;">
+        <div class="smart-item"><div class="letter" style="color:var(--accent1)">S</div><div class="label">Spécifique</div><div class="desc">Précis, pas vague</div></div>
+        <div class="smart-item"><div class="letter" style="color:var(--accent2)">M</div><div class="label">Mesurable</div><div class="desc">On peut le quantifier</div></div>
+        <div class="smart-item"><div class="letter" style="color:var(--accent3)">A</div><div class="label">Atteignable</div><div class="desc">Réaliste avec les ressources</div></div>
+        <div class="smart-item"><div class="letter" style="color:var(--accent4)">R</div><div class="label">Réaliste</div><div class="desc">Cohérent avec le marché</div></div>
+        <div class="smart-item"><div class="letter" style="color:var(--accent1)">T</div><div class="label">Temporel</div><div class="desc">Défini dans le temps</div></div>
+      </div>
+      <div class="example">MAUVAIS : « améliorer la notoriété ». BON : « Augmenter le taux de notoriété assistée de 15% auprès des DSI en Île-de-France d'ici septembre 2025. »</div>
+    </div>
+
+    <div class="step" data-n="5">
+      <span class="tag">CIBLES</span>
+      <h4>Étape 5 — Les Cibles de Communication</h4>
+      <p>Si on parle à tout le monde, on ne parle à personne. On segmente toujours :</p>
+      <div class="cibles-visual">
+        <div class="cible-row">
+          <div class="cible-dot" style="background:var(--accent1)"></div>
+          <div class="cible-info"><div class="cible-name">🎯 Cible principale</div><div class="cible-desc">Le groupe global visé. Ex : DSI et DAF des PME de 50 à 500 salariés en Île-de-France.</div></div>
+        </div>
+        <div class="cible-row">
+          <div class="cible-dot" style="background:#ff6b6b"></div>
+          <div class="cible-info"><div class="cible-name">💎 Cœur de cible</div><div class="cible-desc">La fraction la plus rentable, sur laquelle on concentre le budget. Ex : DSI des PME tech de 100 à 300 salariés.</div></div>
+        </div>
+        <div class="cible-row">
+          <div class="cible-dot" style="background:var(--accent2)"></div>
+          <div class="cible-info"><div class="cible-name">➕ Cible secondaire</div><div class="cible-desc">Complémentaire, peut influencer. Ex : Responsables RSE, DG.</div></div>
+        </div>
+        <div class="cible-row">
+          <div class="cible-dot" style="background:var(--accent3)"></div>
+          <div class="cible-info"><div class="cible-name">📣 Cible relais</div><div class="cible-desc">Prescripteurs qui relaient le message. Ex : Influenceurs tech, journalistes spécialisés IT.</div></div>
+        </div>
+        <div class="cible-row">
+          <div class="cible-dot" style="background:var(--accent4)"></div>
+          <div class="cible-info"><div class="cible-name">🏢 Cible interne</div><div class="cible-desc">Les salariés — premiers ambassadeurs de la marque. À ne jamais oublier !</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-n="6">
+      <span class="tag">MOYENS</span>
+      <h4>Étape 6 — Les Moyens (POEM)</h4>
+      <p>On choisit les canaux selon la cible et le budget. La classification <strong>POEM</strong> est incontournable :</p>
+      <div class="poem-grid">
+        <div class="poem-card paid">
+          <div class="poem-letter">P</div>
+          <h4>Paid Media</h4>
+          <p>Espace acheté : pub TV, display, Google Ads, posts sponsorisés LinkedIn.</p>
+        </div>
+        <div class="poem-card owned">
+          <div class="poem-letter">O</div>
+          <h4>Owned Media</h4>
+          <p>Ce qu'on possède : site web, réseaux sociaux, newsletter, brochures.</p>
+        </div>
+        <div class="poem-card earned">
+          <div class="poem-letter">E</div>
+          <h4>Earned Media</h4>
+          <p>Ce qu'on gagne gratuitement : articles de presse, partages, avis, bouche-à-oreille.</p>
+        </div>
+      </div>
+      <div class="warning">Justifie toujours tes choix de moyens ! Dire « je choisis LinkedIn » sans expliquer pourquoi = 0 point. Dire « je choisis LinkedIn car 80% des DSI y sont actifs et le ciblage professionnel est précis » = plein de points.</div>
+    </div>
+
+    <div class="step" data-n="7">
+      <span class="tag">BUDGET</span>
+      <h4>Étape 7 — Le Budget</h4>
+      <p>Il définit les limites de la campagne et conditionne tous les choix précédents. En général, on répartit entre :</p>
+      <ul class="styled" style="margin-top:8px;">
+        <li>Achat d'espace (Paid Media)</li>
+        <li>Production créative (agence, graphiste, vidéo)</li>
+        <li>Événementiel et salons</li>
+        <li>Outils numériques (logiciels, emailing)</li>
+      </ul>
+    </div>
+
+    <div class="step" data-n="8">
+      <span class="tag">KPIs / BILAN</span>
+      <h4>Étape 8 — Les KPIs (Indicateurs de Performance)</h4>
+      <p>Comment savoir si la campagne a fonctionné ? On définit des KPIs <strong>avant</strong> de lancer, pour mesurer <strong>après</strong>.</p>
+      <ul class="styled" style="margin-top:8px;">
+        <li><strong>Cognitif</strong> → Taux de notoriété, nombre d'impressions, portée</li>
+        <li><strong>Affectif</strong> → Taux d'engagement, sentiment analysis, score d'image</li>
+        <li><strong>Conatif</strong> → Taux de conversion, nombre de leads, taux de clics (CTR), ventes générées</li>
+      </ul>
+      <div class="example">Pour une campagne emailing B2B : taux d'ouverture (cognitif), taux de clics (conatif), nombre de demandes de devis générées (conatif).</div>
+    </div>
+  </div>
+
+  <!-- BRIEF CRÉATIF -->
+  <div class="card card-accent-purple" style="margin-top:28px;">
+    <h3><span class="step-num purple">+</span> Le Brief Créatif — Bonus indispensable</h3>
+    <p style="font-size:13px; color:#555; margin-bottom:12px;">Document transmis à l'agence ou au créatif pour cadrer la campagne.</p>
+    <ul class="styled">
+      <li><strong>La Promesse</strong> : L'idée centrale à faire passer. Ex : « Recyclea, le choix responsable et intelligent »</li>
+      <li><strong>La Preuve</strong> : Ce qui rend la promesse crédible. Ex : Expertise, label RSE, 10 ans d'expérience</li>
+      <li><strong>Le Ton</strong> : Registre de communication. Ex : Professionnel, rassurant, moderne</li>
+      <li><strong>Les Contraintes</strong> : Légales (pas de greenwashing) et annonceur (charte graphique)</li>
+    </ul>
+    <div class="tip">3 modèles de brief existent : Copy Strategy (Procter &amp; Gamble), Plan de Travail Créatif (Y&amp;R), Star Strategy (Havas). Citez-en un dans ta copie pour briller.</div>
+  </div>
+</div>
+
+<!-- ======================== CADRE LÉGAL ======================== -->
+<div id="legal" class="section">
+  <div class="section-title"><span>⚖️</span> Le Cadre Légal</div>
+  <div class="section-subtitle">Toutes les lois à connaître avec leurs obligations et exemples de justification en copie</div>
+
+  <div class="card card-accent-left">
+    <h3><span class="step-num red">1</span> Loi Toubon (1994) — La langue française</h3>
+    <ul class="styled">
+      <li>Le <strong>français est obligatoire</strong> dans tout message publicitaire diffusé en France</li>
+      <li>Exceptions : noms de marques déposées, slogans déposés, produits typiques étrangers</li>
+    </ul>
+    <div class="example">Une pub avec le slogan « Just Do It » en anglais est autorisée car c'est une signature déposée de Nike. Mais une pub avec « Our products are the best » sans traduction serait illégale.</div>
+    <div class="tip">En copie : « Conformément à la loi Toubon, tous les messages de notre campagne seront rédigés en français. »</div>
+  </div>
+
+  <div class="card card-accent-left">
+    <h3><span class="step-num red">2</span> Loi Évin (1991) — Alcool &amp; Tabac</h3>
+    <div class="table-wrap">
+      <table class="law-table">
+        <tr><th>Produit</th><th>Ce qui est interdit</th><th>Ce qui est autorisé</th></tr>
+        <tr>
+          <td class="loi-name">Tabac</td>
+          <td>Toute publicité, sans exception</td>
+          <td>Rien. Interdiction totale.</td>
+        </tr>
+        <tr>
+          <td class="loi-name">Alcool</td>
+          <td>TV, cinéma, affichage pour les moins de 18 ans</td>
+          <td>Presse adulte, radio (certaines heures), internet (avec vérification d'âge). Contenus objectifs uniquement + message sanitaire obligatoire.</td>
+        </tr>
+      </table>
+    </div>
+    <div class="example">Une marque de bière ne peut pas faire de spot TV en France. Elle peut en revanche faire une campagne presse dans un magazine adulte, avec la mention « L'abus d'alcool est dangereux pour la santé. À consommer avec modération. »</div>
+    <div class="tip">En copie : « Ce support n'étant pas autorisé par la loi Évin pour les marques d'alcool, nous optons pour la presse spécialisée adulte. »</div>
+  </div>
+
+  <div class="card card-accent-left">
+    <h3><span class="step-num red">3</span> Droit d'auteur &amp; Contrefaçon</h3>
+    <ul class="styled">
+      <li>Toute utilisation d'une œuvre (photo, musique, texte, logo) <strong>sans autorisation</strong> de son auteur est un <strong>délit de contrefaçon</strong></li>
+      <li>Les personnes apparaissant dans une pub doivent avoir signé un <strong>accord écrit</strong> (droit à l'image)</li>
+      <li>Le droit à la vie privée est protégé : pas de photo/vidéo d'une personne sans consentement</li>
+    </ul>
+    <div class="tip">En copie : « Toutes les visuels utilisés seront libres de droits ou feront l'objet d'une cession de droits. Les personnes apparaissant dans les visuels auront signé une autorisation de droit à l'image. »</div>
+  </div>
+
+  <div class="card card-accent-left">
+    <h3><span class="step-num red">4</span> RGPD (2018) — Protection des données</h3>
+    <ul class="styled">
+      <li>Toute collecte de données personnelles (email, nom, téléphone) nécessite le <strong>consentement explicite</strong></li>
+      <li>Les personnes ont le droit d'accéder, de modifier et d'effacer leurs données (<strong>droit à l'oubli</strong>)</li>
+      <li>Toute base de données marketing doit être déclarée</li>
+      <li>En cas de violation : amendes jusqu'à <strong>4% du chiffre d'affaires mondial</strong></li>
+    </ul>
+    <div class="example">Lors d'une campagne emailing, on ne peut envoyer des mails qu'aux contacts ayant explicitement coché la case « J'accepte de recevoir des communications de la marque ».</div>
+    <div class="tip">En copie : « Conformément au RGPD, notre campagne d'emailing ne ciblera que des contacts ayant donné leur consentement opt-in. Un lien de désinscription sera inclus dans chaque email. »</div>
+  </div>
+
+  <div class="card card-accent-left">
+    <h3><span class="step-num red">5</span> Recommandations ARPP — Publicité responsable</h3>
+    <ul class="styled">
+      <li>L'<strong>ARPP</strong> (Autorité de Régulation Professionnelle de la Publicité) fixe des règles déontologiques</li>
+      <li>Interdit : publicités sexistes, stéréotypes dégradants, contenus discriminatoires</li>
+      <li>Interdit : le <strong>greenwashing</strong> = prétendre être écologique sans preuve → considéré comme tromperie</li>
+      <li>Obligatoire : toute allégation environnementale doit être vérifiable et prouvée</li>
+    </ul>
+    <div class="warning">Le greenwashing est une faute grave. Si tu proposes une campagne avec un argument écologique, tu dois mentionner les preuves (label, certification, données chiffrées).</div>
+    <div class="tip">En copie : « Conformément aux recommandations de l'ARPP, nos arguments RSE s'appuieront sur des données certifiées afin d'éviter tout risque de greenwashing. »</div>
+  </div>
+
+  <div class="card card-accent-green">
+    <h3><span class="step-num green">+</span> Autres réglementations sectorielles</h3>
+    <div class="table-wrap">
+      <table class="law-table">
+        <tr><th>Secteur</th><th>Obligation</th></tr>
+        <tr><td class="loi-name">Médicaments</td><td>Autorisation de l'ANSM requise avant toute diffusion. Loi anti-cadeaux pour les pros de santé.</td></tr>
+        <tr><td class="loi-name">Alimentaire</td><td>Mentions sanitaires obligatoires (ex : « Pour votre santé, mangez 5 fruits et légumes par jour ») ou taxe de 1,5%.</td></tr>
+        <tr><td class="loi-name">Crédit bancaire</td><td>Affichage obligatoire du TAEG, de la durée et du coût total du crédit.</td></tr>
+        <tr><td class="loi-name">Pub comparative</td><td>Doit se baser sur des éléments objectifs (prix, composition) et être loyale. Sinon = tromperie.</td></tr>
+        <tr><td class="loi-name">Énergies fossiles</td><td>Publicité interdite depuis 2023, sauf exceptions (biocarburants).</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card card-accent-yellow">
+    <h3><span class="step-num yellow">🎓</span> Contrôle &amp; Régulation</h3>
+    <ul class="styled">
+      <li><strong>ARCOM</strong> : Régule l'audiovisuel (TV, radio). Surveille le respect des règles de diffusion.</li>
+      <li><strong>ARPP</strong> : Organisme professionnel qui émet des recommandations déontologiques.</li>
+      <li><strong>DGCCRF</strong> : Réprime les fraudes (publicité mensongère, pratiques déloyales).</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ======================== VEILLE & OUTILS ======================== -->
+<div id="veille" class="section">
+  <div class="section-title"><span>🔍</span> Veille &amp; Outils Professionnels</div>
+  <div class="section-subtitle">Quel outil choisir et pourquoi — comment argumenter en examen</div>
+
+  <div class="card card-accent-green" style="margin-bottom:20px;">
+    <h3><span class="step-num green">💡</span> Pourquoi faire de la veille ?</h3>
+    <p style="font-size:14px; color:#444;">La veille permet de <strong>rester informé</strong> en continu sur le marché, la concurrence, les tendances et les performances de ses propres campagnes. C'est la base du diagnostic (étape 1 du plan de com).</p>
+  </div>
+
+  <div class="subsection-title">📊 Analyse Audience &amp; Comportement</div>
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-name">Google Analytics</div>
+      <span class="tool-type tt-analyse">Analyse Web</span>
+      <div class="tool-desc">Mesure le trafic d'un site web : qui visite, d'où viennent les visiteurs, combien de temps restent-ils. <strong>Gratuit.</strong></div>
+      <div class="example" style="margin-top:10px; font-size:12px;">« Nous utiliserons Google Analytics pour mesurer le taux de rebond et le temps de visite sur la landing page de la campagne. »</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Hotjar / Crazy Egg</div>
+      <span class="tool-type tt-analyse">UX / Heatmaps</span>
+      <div class="tool-desc">Montre sur quelles zones une page est cliquée via des cartes de chaleur (heatmaps). Idéal pour optimiser l'ergonomie d'un site.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Adobe Analytics</div>
+      <span class="tool-type tt-analyse">Analyse avancée</span>
+      <div class="tool-desc">Version entreprise, plus puissante que Google Analytics. Segmentation fine des audiences, attribution multi-touch.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Matomo</div>
+      <span class="tool-type tt-analyse">RGPD friendly</span>
+      <div class="tool-desc">Alternative à Google Analytics respectueuse du RGPD. Les données restent sur vos serveurs. Idéal pour les organisations publiques.</div>
+      <div class="example" style="margin-top:10px; font-size:12px;">« Nous choisissons Matomo plutôt que GA car il est 100% RGPD-compliant, sans transfert de données vers des serveurs américains. »</div>
+    </div>
+  </div>
+
+  <div class="subsection-title">📺 Mesure Médias Traditionnels</div>
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-name">Médiamétrie (Médiamat)</div>
+      <span class="tool-type tt-mesure">Audience TV/Radio</span>
+      <div class="tool-desc">Mesure les audiences télévisées et radio en France. Fournit la <strong>PDA</strong> (Part d'Audience) et la durée d'écoute moyenne.</div>
+      <div class="example" style="margin-top:10px; font-size:12px;">« Selon Médiamétrie, TF1 réalise une PDA de 20% en prime time — c'est pourquoi nous y diffuserons notre spot. »</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Kantar Media</div>
+      <span class="tool-type tt-mesure">Pression publicitaire</span>
+      <div class="tool-desc">Mesure les investissements publicitaires de la concurrence. Permet de savoir combien dépense un concurrent et sur quels médias.</div>
+      <div class="example" style="margin-top:10px; font-size:12px;">« Kantar révèle que notre concurrent principal investit 60% de son budget sur le digital — nous ferons de même. »</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Kantar Sofres / BVA</div>
+      <span class="tool-type tt-mesure">Études opinion</span>
+      <div class="tool-desc">Instituts de sondage et d'études qui mesurent la notoriété des marques, la satisfaction client, les perceptions.</div>
+    </div>
+  </div>
+
+  <div class="subsection-title">📅 Planification Réseaux Sociaux</div>
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-name">Hootsuite</div>
+      <span class="tool-type tt-planning">Planification</span>
+      <div class="tool-desc">Planifie et publie sur tous les réseaux sociaux depuis un seul tableau de bord. Mesure l'engagement en temps réel.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Buffer</div>
+      <span class="tool-type tt-planning">Planification</span>
+      <div class="tool-desc">Plus simple et moins cher que Hootsuite. Idéal pour les petites structures. Propose des analyses de performance par post.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Sprout Social</div>
+      <span class="tool-type tt-planning">Planification avancée</span>
+      <div class="tool-desc">Outil complet incluant gestion de la relation client (CRM) sur les réseaux sociaux + analyse approfondie.</div>
+    </div>
+  </div>
+
+  <div class="subsection-title">📧 Outils d'Emailing</div>
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-name">Mailchimp</div>
+      <span class="tool-type tt-emailing">Emailing</span>
+      <div class="tool-desc">Solution leader pour créer et envoyer des newsletters. Segmentation, A/B testing, suivi des taux d'ouverture et de clics.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Brevo (ex-Sendinblue)</div>
+      <span class="tool-type tt-emailing">Emailing</span>
+      <div class="tool-desc">Solution française, plus économique. Email + SMS + CRM. RGPD-compliant. Idéal pour les campagnes BtoB.</div>
+      <div class="example" style="margin-top:10px; font-size:12px;">« Nous utiliserons Brevo pour notre campagne d'emailing B2B car il est RGPD-compliant et propose un suivi précis des KPIs. »</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">ActiveCampaign</div>
+      <span class="tool-type tt-emailing">Marketing automation</span>
+      <div class="tool-desc">Va au-delà de l'emailing : automatise des séquences (ex : envoyer un email J+3 si le prospect n'a pas ouvert le premier).</div>
+    </div>
+  </div>
+
+  <div class="subsection-title">📰 Veille Informationnelle</div>
+  <div class="tool-grid">
+    <div class="tool-card">
+      <div class="tool-name">Feedly / Inoreader</div>
+      <span class="tool-type tt-veille">Flux RSS</span>
+      <div class="tool-desc">Agrège les flux RSS de tous les sites et blogs que tu veux surveiller. Permet une veille sectorielle quotidienne automatisée.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Google Alerts</div>
+      <span class="tool-type tt-veille">Veille marque</span>
+      <div class="tool-desc">Gratuit et simple : reçoit un email dès qu'une mention de ta marque ou d'un mot-clé apparaît sur le web.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-name">Mention / Talkwalker</div>
+      <span class="tool-type tt-veille">E-réputation</span>
+      <div class="tool-desc">Surveille en temps réel les mentions d'une marque sur les réseaux sociaux, la presse et les forums.</div>
+    </div>
+  </div>
+
+  <div class="card card-accent-yellow" style="margin-top:24px;">
+    <h3><span class="step-num yellow">🎓</span> Comment choisir un outil à l'examen ?</h3>
+    <ul class="styled">
+      <li>Si on parle de <strong>trafic web</strong> → Google Analytics ou Matomo</li>
+      <li>Si on parle de <strong>TV ou radio</strong> → Médiamétrie</li>
+      <li>Si on parle de <strong>concurrence / pression pub</strong> → Kantar Media</li>
+      <li>Si on parle d'<strong>emailing</strong> → Mailchimp ou Brevo</li>
+      <li>Si on parle de <strong>réseaux sociaux</strong> → Hootsuite ou Buffer</li>
+      <li>Si le contexte est <strong>RGPD / données sensibles</strong> → Matomo, Brevo</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ======================== ACTEURS ======================== -->
+<div id="acteurs" class="section">
+  <div class="section-title"><span>👥</span> Les Acteurs de la Communication</div>
+  <div class="section-subtitle">Qui mobiliser selon la campagne et comment justifier tes choix</div>
+
+  <div class="card card-accent-purple" style="margin-bottom:24px;">
+    <h3><span class="step-num purple">💡</span> Le principe clé</h3>
+    <p style="font-size:14px; color:#444;">À l'examen, tu dois non seulement nommer les acteurs mais <strong>expliquer pourquoi tu les mobilises</strong> pour cette campagne précise. Un acteur sans justification ne rapporte aucun point.</p>
+  </div>
+
+  <div class="subsection-title">🏢 Les acteurs côté Annonceur</div>
+  <div class="actor-grid">
+    <div class="actor-card">
+      <div class="actor-icon">👔</div>
+      <div class="actor-title">Direction Marketing / Com</div>
+      <div class="actor-desc">Définit la stratégie, valide les grandes orientations, gère le budget global.</div>
+    </div>
+    <div class="actor-card">
+      <div class="actor-icon">✍️</div>
+      <div class="actor-title">Chef de Projet / Traffic Manager</div>
+      <div class="actor-desc">Coordonne les intervenants, gère les plannings et s'assure que tout est livré en temps et en heure.</div>
+    </div>
+    <div class="actor-card">
+      <div class="actor-icon">📊</div>
+      <div class="actor-title">Chargé d'Études</div>
+      <div class="actor-desc">Réalise la veille et les études de marché pour alimenter le diagnostic.</div>
+    </div>
+    <div class="actor-card">
+      <div class="actor-icon">💻</div>
+      <div class="actor-title">Community Manager</div>
+      <div class="actor-desc">Gère les réseaux sociaux au quotidien : publications, interactions, modération.</div>
+    </div>
+  </div>
+
+  <div class="subsection-title">🎨 Les acteurs côté Agence</div>
+  <div class="actor-grid">
+    <div class="actor-card">
+      <div class="actor-icon">🏛️</div>
+      <div class="actor-title">Agence de Communication (360°)</div>
+      <div class="actor-desc">Gère toute la stratégie et la production. Mobilisée pour des campagnes d'envergure multi-support.</div>
+    </div>
+    <div class="actor-card">
+      <div class="actor-icon">🎭</div>
+      <div class="actor-title">Directeur Artistique (DA)</div>
+      <div class="actor-desc">Crée la direction visuelle de la campagne. Travaille avec un rédacteur pour former le binôme créatif.</div>
+    </div>
+    <div class="actor-card">
+      <div class="actor-icon">✒️</div>
+      <div class="actor-title">Concepteur-Rédacteur</div>
+      <div class="actor-desc">Écrit les textes (slogans, accroche, corps de texte). Binôme du DA dans la conception créative.</div>
+    </div>
+    <div class="actor-card">
+      <div class="actor-icon">📱</div>
+      <div class="actor-title">Agence Digitale</div>
+      <div class="actor-desc">Spécialisée web, réseaux sociaux, SEO/SEA, campagnes digitales. Mobilisée quand le digital est central.</div>
+    </div>
+    <div class="actor-card">
+      <div class="actor-icon">📺</div>
+      <div class="actor-title">Régie Publicitaire</div>
+      <div class="actor-desc">Commercialise les espaces publicitaires pour un média (TF1 Publicité, France Pub…). Gère l'achat d'espace.</div>
+    </div>
+    <div class="actor-card">
+      <div class="actor-icon">🖨️</div>
+      <div class="actor-title">Imprimeur / Façonnier</div>
+      <div class="actor-desc">Produit les supports print (flyers, affiches, brochures). Mobilisé pour toute campagne hors-médias print.</div>
+    </div>
+  </div>
+
+  <div class="subsection-title">📣 Les acteurs Relais (prescripteurs)</div>
+  <div class="actor-grid">
+    <div class="actor-card">
+      <div class="actor-icon">📰</div>
+      <div class="actor-title">Journalistes &amp; RP</div>
+      <div class="actor-desc">Relaient le message dans la presse. Mobilisés via des communiqués et dossiers de presse.</div>
+    </div>
+    <div class="actor-card">
+      <div class="actor-icon">🌟</div>
+      <div class="actor-title">Influenceurs</div>
+      <div class="actor-desc">Relaient le message auprès de leur communauté. Pertinents si la cible est présente sur les réseaux sociaux.</div>
+    </div>
+    <div class="actor-card">
+      <div class="actor-icon">🤝</div>
+      <div class="actor-title">Partenaires &amp; Associations</div>
+      <div class="actor-desc">Apportent de la crédibilité et un réseau complémentaire (ex : association environnementale pour une marque RSE).</div>
+    </div>
+  </div>
+
+  <div class="card card-accent-left" style="margin-top:24px;">
+    <h3><span class="step-num red">🎓</span> Qui mobiliser selon le type de campagne ?</h3>
+    <div class="table-wrap">
+      <table class="law-table">
+        <tr><th>Type de campagne</th><th>Acteurs clés à mobiliser</th></tr>
+        <tr><td><strong>Lancement de produit grand public</strong></td><td>Agence 360°, DA + Rédacteur, Régie TV, Influenceurs, RP</td></tr>
+        <tr><td><strong>Campagne B2B (ex: Recyclea)</strong></td><td>Agence digitale, Community Manager, Agence RP spécialisée, Chargé d'études pour la veille</td></tr>
+        <tr><td><strong>Événement / Salon</strong></td><td>Agence événementielle, Chef de projet, Imprimeur (supports), Régie pour l'affichage</td></tr>
+        <tr><td><strong>Campagne emailing</strong></td><td>Community Manager, Agence digitale, Chef de projet, Responsable RGPD</td></tr>
+        <tr><td><strong>Relations presse</strong></td><td>Attaché de presse, Journalistes ciblés, Rédacteur (communiqué)</td></tr>
+      </table>
+    </div>
+    <div class="tip">En copie : « Nous ferons appel à une agence digitale spécialisée BtoB car notre cible (DSI de PME) est principalement active sur LinkedIn et les newsletters professionnelles. »</div>
+  </div>
+</div>
+
+<footer>
+  Fiche de révision BTS Communication — Bloc 01<br>
+  Générée à partir de tes cours · Bon courage pour l'épreuve 🎯
+</footer>
+
+<script>
+  // ── Tab switching ──────────────────────────────────────
+  const tabMap = { plan: 'plan', legal: 'legal', veille: 'veille', acteurs: 'acteurs' };
+
+  function showTab(id, btn, isMobile) {
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+
+    // Desktop tabs
+    document.querySelectorAll('.top-nav .tab').forEach(t => t.classList.remove('active'));
+    const desktopTab = document.getElementById('tab-' + id);
+    if (desktopTab) desktopTab.classList.add('active');
+
+    // Bottom nav tabs
+    document.querySelectorAll('.bnav-tab').forEach(t => t.classList.remove('active'));
+    const bnavTab = document.getElementById('bnav-' + id);
+    if (bnavTab) bnavTab.classList.add('active');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Progress bar ───────────────────────────────────────
+  const progressBar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+
+    // Back to top button
+    const btn = document.getElementById('back-top');
+    if (scrollTop > 300) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  });
+</script>
+</body>
+</html>
