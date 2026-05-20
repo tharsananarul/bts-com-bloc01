@@ -188,12 +188,29 @@ export default function PlanSection() {
           <span className={styles.tag}>KPIs / BILAN</span>
           <h4>Étape 8 — Les KPIs (Indicateurs de Performance)</h4>
           <p>On définit des KPIs <strong>avant</strong> de lancer, pour mesurer <strong>après</strong>.</p>
+          <p style={{ marginTop: 12, fontSize: 13.5, color: '#475569' }}>Les KPIs se divisent en 2 types :</p>
+          
+          <h5 style={{ fontSize: 14, fontWeight: 700, marginTop: 16, marginBottom: 8, color: 'var(--ink)' }}>📊 KPIs Quantitatifs (ce qu'on mesure en chiffres)</h5>
           <StyledList items={[
-            <><strong>Cognitif</strong> → Taux de notoriété, nombre d'impressions, portée</>,
-            <><strong>Affectif</strong> → Taux d'engagement, sentiment analysis, score d'image</>,
-            <><strong>Conatif</strong> → Taux de conversion, nombre de leads, CTR, ventes générées</>,
+            <><strong>Cognitif</strong> → Nombre d'impressions, taux de notoriété, portée, nombre de vues</>,
+            <><strong>Affectif</strong> → Taux d'engagement, nombre de likes/partages, score de satisfaction</>,
+            <><strong>Conatif</strong> → Taux de conversion, nombre de leads, CTR, chiffre d'affaires généré, nombre de ventes</>,
           ]} />
-          <Example>Pour une campagne emailing B2B : taux d'ouverture (cognitif), taux de clics (conatif), nombre de demandes de devis générées (conatif).</Example>
+
+          <h5 style={{ fontSize: 14, fontWeight: 700, marginTop: 16, marginBottom: 8, color: 'var(--ink)' }}>💬 KPIs Qualitatifs (ce qu'on mesure en perception)</h5>
+          <StyledList items={[
+            <><strong>Cognitif</strong> → Qualité de la mémorisation du message, clarté du message perçu</>,
+            <><strong>Affectif</strong> → Sentiment analysis (positif/négatif/neutre), perception de l'image de marque, avis clients</>,
+            <><strong>Conatif</strong> → Qualité des leads générés, niveau de satisfaction après achat</>,
+          ]} />
+
+          <Example>
+            <strong>Exemple Recyclea :</strong><br />
+            <strong>Quantitatif :</strong> 200 leads générés en 3 mois, taux d'ouverture emailing de 25%, 10 000 impressions sur LinkedIn.<br />
+            <strong>Qualitatif :</strong> Perception du reconditionné comme "fiable et professionnel" mesurée via sondage post-campagne.
+          </Example>
+          
+          <Tip>À l'examen : Cite toujours au moins un KPI quantitatif ET un KPI qualitatif. Ça montre que tu mesures à la fois les résultats concrets et l'impact sur l'image.</Tip>
         </div>
       </Steps>
 
