@@ -1,0 +1,25 @@
+.step {
+  position: relative;
+  margin-bottom: 20px;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 18px;
+  box-shadow: 0 2px 8px rgba(15,23,42,.06);
+  transition: box-shadow var(--ease);
+  counter-increment: none;
+}
+.step:hover { box-shadow: 0 8px 30px rgba(15,23,42,.12); }
+.step h4 { font-weight: 700; font-size: 15px; margin: 8px 0; line-height: 1.4; color: var(--ink); }
+.step p  { font-size: 14px; color: #334155; line-height: 1.7; }
+
+.tag {
+  display: inline-block;
+  background: #f1f5f9; color: #64748b;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 10px; border-radius: 100px;
+  margin-bottom: 4px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+  border: 1px solid #e2e8f0;
+}

@@ -1,0 +1,15 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px; margin-top: 14px;
+}
+.item {
+  background: white; border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 14px 8px; text-align: center;
+  transition: all var(--ease);
+  box-shadow: 0 1px 4px rgba(15,23,42,.05);
+}
+.item:hover { box-shadow: 0 6px 20px rgba(15,23,42,.1); transform: translateY(-2px); }
+.letter { font-size: 28px; font-weight: 900; font-family: 'Playfair Display', serif; }
+.label  { font-size: 12px; font-weight: 700; margin: 5px 0 3px; color: var(--ink); }
+.desc   { font-size: 11px; color: var(--muted); line-height: 1.4; }

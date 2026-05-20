@@ -1,0 +1,22 @@
+.btn {
+  position: fixed;
+  bottom: calc(var(--nav-h) + 16px);
+  right: 18px;
+  width: 48px; height: 48px;
+  background: var(--ink);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px; font-weight: 700;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  transform: translateY(16px) scale(.8);
+  transition: opacity .3s, transform .3s, background var(--ease);
+  z-index: 150;
+  box-shadow: 0 6px 24px rgba(15,23,42,.3);
+}
+.btn.visible { opacity: 1; transform: translateY(0) scale(1); }
+.btn:hover   { background: var(--accent1); }
+
+@media (min-width: 641px) { .btn { bottom: 28px; } }

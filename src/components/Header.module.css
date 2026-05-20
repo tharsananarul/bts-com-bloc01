@@ -1,0 +1,71 @@
+.header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+  color: white;
+  padding: 48px 24px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.blob1 {
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(220,38,38,.28) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.blob2 {
+  position: absolute;
+  bottom: -120px; left: 30%;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(109,40,217,.22) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.content { position: relative; z-index: 1; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(220,38,38,.9);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255,255,255,.2);
+  box-shadow: 0 4px 15px rgba(220,38,38,.4);
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 7vw, 56px);
+  font-weight: 900;
+  line-height: 1.05;
+  margin-bottom: 14px;
+  letter-spacing: -1px;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #fbbf24, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: rgba(255,255,255,.65);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+@media (max-width: 640px) {
+  .header { padding: 36px 20px 30px; }
+}

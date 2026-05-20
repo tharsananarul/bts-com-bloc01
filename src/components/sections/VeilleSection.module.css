@@ -1,0 +1,31 @@
+.toolGrid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px; margin-top: 14px;
+}
+.toolCard {
+  background: white; border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 20px;
+  transition: all var(--ease);
+  box-shadow: 0 2px 8px rgba(15,23,42,.06);
+}
+.toolCard:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(15,23,42,.15); }
+
+.toolName {
+  font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 500;
+  color: var(--accent4-text); margin-bottom: 8px;
+}
+.toolType {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 100px; margin-bottom: 10px;
+}
+.tt-analyse  { background: #dbeafe; color: #1e40af; }
+.tt-planning { background: #dcfce7; color: #166534; }
+.tt-emailing { background: #fce7f3; color: #831843; }
+.tt-mesure   { background: #ede9fe; color: #4c1d95; }
+.tt-veille   { background: #fef3c7; color: #78350f; }
+
+.toolDesc { font-size: 13px; color: #475569; line-height: 1.6; }
+.example { margin-top: 10px; font-size: 12px; }
+
+@media (max-width: 640px) { .toolGrid { grid-template-columns: 1fr; } }
